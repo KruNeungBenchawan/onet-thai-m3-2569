@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมุดโน้ตสีพาสเทล & ผจญภัย 5 ด่าน พิชิต O-NET ภาษาไทย ม.3 (ปีการศึกษา 2569)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kodchasan:wght@400;500;600;700&family=Mali:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #fffdf9;
+            --sky-pastel: #e0f2fe;
+            --sky-border: #0284c7;
+            --amber-pastel: #fef3c7;
+            --amber-border: #d97706;
+            --mint-pastel: #d1fae5;
+            --mint-border: #059669;
+            --lavender-pastel: #f3e8ff;
+            --lavender-border: #7c3aed;
+            --pink-pastel: #fce7f3;
+            --pink-border: #db2777;
+            --rose-pastel: #ffe4e6;
+            --indigo-pastel: #e0e7ff;
+            --text-dark: #1e293b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Mali', 'Kodchasan', 'Sarabun', Tahoma, sans-serif;
+            background-color: var(--bg-cream);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(252, 231, 243, 0.7) 0%, transparent 25%),
+                radial-gradient(circle at 88% 22%, rgba(224, 242, 254, 0.7) 0%, transparent 25%),
+                radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
+            background-size: 100% 100%, 100% 100%, 24px 24px;
+            color: var(--text-dark);
+            line-height: 1.72;
+            padding-bottom: 60px;
+            font-size: 16.5px;
+        }
+        h1, h2, h3, h4, .cute-font {
+            font-family: 'Kodchasan', 'Mali', 'Sarabun', sans-serif;
+            letter-spacing: 0.2px;
+        }
+        .print-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(90deg, #4338ca, #7c3aed, #db2777);
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            background: rgba(255,255,255,0.18);
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: background 0.15s;
+        }
+        .nav-links a:hover { background: rgba(255,255,255,0.35); }
+        .print-btn {
+            background: #fde047;
+            color: #0f172a;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-family: 'Mali', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #ca8a04;
+        }
+        .print-btn:hover { transform: translateY(-2px); background: #fef08a; }
+        .page-container { max-width: 1080px; margin: 28px auto; padding: 0 20px; }
+        .notebook-page {
+            background: #ffffff;
+            border-radius: 30px;
+            border: 4px solid #e2e8f0;
+            box-shadow: 0 12px 0 #cbd5e1, 0 20px 40px rgba(15, 23, 42, 0.08);
+            padding: 36px 42px;
+            margin-bottom: 36px;
+            position: relative;
+        }
+        .stage-header {
+            border-radius: 22px;
+            padding: 20px 26px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .stage-header.s1 { background: var(--sky-pastel); border: 3px solid var(--sky-border); color: #0c4a6e; }
+        .stage-header.s2 { background: var(--amber-pastel); border: 3px solid var(--amber-border); color: #78350f; }
+        .stage-header.s3 { background: var(--mint-pastel); border: 3px solid var(--mint-border); color: #064e3b; }
+        .stage-header.s4 { background: var(--lavender-pastel); border: 3px solid var(--lavender-border); color: #4c1d95; }
+        .stage-header.s5 { background: var(--pink-pastel); border: 3px solid var(--pink-border); color: #831843; }
+        .stage-badge {
+            background: #fff;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid currentColor;
+        }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-bottom: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px; }
+        .note-box {
+            border-radius: 20px;
+            padding: 18px 22px;
+            border: 2.5px solid #cbd5e1;
+            background: #f8fafc;
+        }
+        .note-box.sky { background: #f0f9ff; border-color: #7dd3fc; }
+        .note-box.amber { background: #fffbeb; border-color: #fcd34d; }
+        .note-box.mint { background: #ecfdf5; border-color: #6ee7b7; }
+        .note-box.purple { background: #faf5ff; border-color: #d8b4fe; }
+        .note-box.pink { background: #fdf2f8; border-color: #f9a8d4; }
+        .note-box h3 { font-size: 1.15rem; margin-bottom: 10px; color: #0f172a; }
+        .note-box ul { padding-left: 20px; }
+        .note-box li { margin-bottom: 6px; }
+        .tip-pill {
+            background: #fef08a;
+            border: 2px dashed #ca8a04;
+            border-radius: 16px;
+            padding: 12px 18px;
+            margin: 14px 0;
+            font-weight: 600;
+            color: #713f12;
+        }
+        table.pastel-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 16px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #cbd5e1;
+        }
+        table.pastel-table th {
+            background: #6366f1;
+            color: #fff;
+            padding: 11px 14px;
+            text-align: left;
+            font-weight: 700;
+        }
+        table.pastel-table td {
+            padding: 10px 14px;
+            border-top: 1px solid #e2e8f0;
+            background: #fff;
+            vertical-align: top;
+        }
+        table.pastel-table tr:nth-child(even) td { background: #f8fafc; }
+        .klong-diagram {
+            background: #faf5ff;
+            border: 3px solid #a855f7;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin: 16px 0;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.15rem;
+            line-height: 2.1;
+        }
+        .ek { background: #fde047; color: #713f12; padding: 2px 7px; border-radius: 8px; font-weight: 700; border: 1.5px solid #ca8a04; }
+        .tho { background: #fbcfe8; color: #831843; padding: 2px 7px; border-radius: 8px; font-weight: 700; border: 1.5px solid #db2777; }
+        .rubric-box {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 3px solid #f59e0b;
+            border-radius: 22px;
+            padding: 22px 26px;
+            margin-top: 16px;
+        }
+        @media print {
+            .print-bar { display: none; }
+            body { background: #fff; padding: 0; }
+            .notebook-page { box-shadow: none; border: 2px solid #cbd5e1; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-bar">
+        <div class="nav-links">
+            <a href="index.html">🏠 หน้าหลัก</a>
+            <a href="#stage1">🏰 ด่าน 1 การอ่าน</a>
+            <a href="#stage2">✍️ ด่าน 2 การเขียน</a>
+            <a href="#stage3">🎧 ด่าน 3 ฟัง-ดู-พูด</a>
+            <a href="#stage4">⚡ ด่าน 4 หลักภาษา</a>
+            <a href="#stage5">🌸 ด่าน 5 วรรณคดี</a>
+        </div>
+        <button class="print-btn" onclick="window.print()">🖨️ พิมพ์สมุดโน้ต / บันทึก PDF</button>
+    </div>
+
+    <div class="page-container">
+        <!-- Cover Page -->
+        <div class="notebook-page" style="background: linear-gradient(135deg, #eef2ff 0%, #fdf2f8 100%); border-color:#c084fc; text-align:center;">
+            <div style="display:inline-block; background:#fde047; color:#1e1b4b; padding:6px 20px; border-radius:999px; font-weight:700; margin-bottom:14px; border:2px solid #eab308;">
+                ✨ อ้างอิงผังการสร้างข้อสอบ สทศ. ปีการศึกษา 2569 (ครบ 5 สาระ 32 ตัวชี้วัด)
+            </div>
+            <h1 style="font-size:2.2rem; color:#312e81; margin-bottom:10px;">สมุดโน้ตภาพสีพาสเทล พิชิต O-NET ภาษาไทย ม.3</h1>
+            <p style="font-size:1.1rem; color:#475569; margin-bottom:20px;">สรุปเนื้อหาเข้มข้น + สูตรลัดทำข้อสอบ 30 ข้อ 100 คะแนน (เวลา 90 นาที)</p>
+            <div class="grid-3" style="text-align:left;">
+                <div class="note-box sky"><strong>1. ปรนัย 4 ตัวเลือก 1 คำตอบ</strong><br>24 ข้อ (ข้อละ 2.36) = 56.64 คะแนน</div>
+                <div class="note-box purple"><strong>2. ปรนัย 5 ตัวเลือก 2 คำตอบ</strong><br>4 ข้อ (ข้อละ 2.75) = 11.00 คะแนน</div>
+                <div class="note-box pink"><strong>3. หมวดสัมพันธ์กัน</strong><br>1 ข้อ (ข้อละ 2.36) = 2.36 คะแนน</div>
+            </div>
+            <div class="note-box amber" style="text-align:center; font-size:1.08rem;">
+                <strong>🔥 4. รูปแบบผสมผสาน (ปรนัยและอัตนัย) : 1 ข้อ = 30.00 คะแนนเต็ม!</strong><br>
+                (วัดทักษะการเขียนย่อความ + อธิบายโต้แย้งอย่างมีเหตุผล + วิเคราะห์วิจารณ์สื่อ)
+            </div>
+            <p style="margin-top:16px; color:#be185d; font-weight:700;">👩‍🏫 ออกแบบและพัฒนาสื่อโดย : ครูเบ็ญจวรรณ สิงห์กุล • โรงเรียนวัดราษฎร์บำรุง สพป.สระบุรี เขต 2</p>
+        </div>
+
+        <!-- Stage 1 -->
+        <div class="notebook-page" id="stage1">
+            <div class="stage-header s1">
+                <div>
+                    <h2>🏰 ด่านที่ 1 : การอ่าน (มาตรฐาน ท 1.1)</h2>
+                    <p>9 ตัวชี้วัด (ม.1/3, ม.3/2 – ม.3/9)</p>
+                </div>
+                <div class="stage-badge">9 ข้อ • 21.24 คะแนน (4 ตัวเลือก)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box sky">
+                    <h3>1. เหตุและผล vs ข้อเท็จจริงกับข้อคิดเห็น (ม.1/3)</h3>
+                    <ul>
+                        <li><strong>เหตุ-ผล:</strong> สังเกตคำเชื่อม <em>เพราะ เนื่องจาก จึง ดังนั้น ส่งผลให้</em></li>
+                        <li><strong>ข้อเท็จจริง:</strong> พิสูจน์ได้ มีตัวเลข สถิติ วันเวลา เหตุการณ์จริง ไม่มีความรู้สึกส่วนตัว</li>
+                        <li><strong>ข้อคิดเห็น:</strong> ความรู้สึก คาดคะเน เสนอแนะ มักมีคำว่า <em>น่าจะ ควร จะ คง อาจ ดีที่สุด</em></li>
+                    </ul>
+                </div>
+                <div class="note-box sky">
+                    <h3>2. ความหมายโดยตรง vs ความหมายโดยนัย (ม.3/2)</h3>
+                    <ul>
+                        <li><strong>โดยตรง:</strong> แปลตามพจนานุกรม เช่น <em>เสือ</em> (สัตว์), <em>เก้าอี้</em> (ที่นั่ง), <em>มือสะอาด</em> (ล้างมือแล้ว)</li>
+                        <li><strong>โดยนัย:</strong> แฝงความหมายเปรียบเทียบ เช่น <em>เสือ</em> (คนดุ/เก่ง), <em>เก้าอี้</em> (ตำแหน่ง), <em>มือสะอาด</em> (ซื่อสัตย์ไม่โกง), <em>ลูกไก่ในกำมือ</em> (ผู้ที่ตกอยู่ในอำนาจ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box amber">
+                    <h3>3. ใจความสำคัญ &amp; กรอบแนวคิด/ผังความคิด (ม.3/3, ม.3/4)</h3>
+                    <ul>
+                        <li><strong>ใจความสำคัญ:</strong> ประโยคหลักของย่อหน้า (ใคร ทำอะไร ที่ไหน อย่างไร) มักอยู่ต้นย่อหน้า หรือท้ายย่อหน้า (หลังคำว่า <em>ดังนั้น สรุปได้ว่า</em>)</li>
+                        <li><strong>พลความ (รายละเอียดสนับสนุน):</strong> ตัวอย่าง คำอธิบาย ตัวเลข เหตุผลเสริม (ตัดออกได้ใจความหลักยังอยู่)</li>
+                        <li><strong>ผังความคิด (Mind Map):</strong> จัดกลุ่มหัวข้อใหญ่-ย่อยจากสาระสำคัญของเรื่อง</li>
+                    </ul>
+                </div>
+                <div class="note-box mint">
+                    <h3>4. วิเคราะห์ วิจารณ์ ประเมินเรื่องที่อ่าน (ม.3/5 – ม.3/9)</h3>
+                    <ul>
+                        <li><strong>กลวิธีเปรียบเทียบ (ม.3/5):</strong> เปรียบเทียบข้อดี-ข้อเสีย อุปมาอุปไมย ให้เห็นภาพชัด</li>
+                        <li><strong>ประเมินข้อมูลสนับสนุน (ม.3/6):</strong> ตรวจแหล่งอ้างอิง ความเป็นปัจจุบัน ความน่าเชื่อถือ</li>
+                        <li><strong>ความสมเหตุสมผล/ลำดับความ (ม.3/7):</strong> เหตุสอดคล้องกับผล ไม่ย้อนแย้ง</li>
+                        <li><strong>โต้แย้งและตีความคุณค่า (ม.3/8, ม.3/9):</strong> แยกจุดอ่อนของข้อเสนอ และสรุปแนวคิดไปแก้ปัญหาชีวิตจริง</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip-pill">
+                💡 <strong>สูตรลับ O-NET ม.3 ด่านการอ่าน:</strong> อ่านคำถามก่อนอ่านบทความ! ขีดเส้นใต้คำสำคัญ เช่น <em>"ข้อใดเป็นข้อคิดเห็น" "คำใดมีความหมายโดยนัย" "ข้อใดไม่ใช่ใจความสำคัญ"</em> จะช่วยประหยัดเวลาและไม่โดนตัวลวง
+            </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="notebook-page" id="stage2">
+            <div class="stage-header s2">
+                <div>
+                    <h2>✍️ ด่านที่ 2 : การเขียน (มาตรฐาน ท 2.1) 🔥 ด่านทำคะแนนสูงสุด!</h2>
+                    <p>7 ตัวชี้วัด (ม.1/2, ม.2/2, ม.2/3, ม.2/6, ม.3/4, ม.3/6, ม.3/7)</p>
+                </div>
+                <div class="stage-badge">8 ข้อ • 46.52 คะแนน (ปรนัย 7 + ผสมผสาน 1)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box amber">
+                    <h3>1. ถ้อยคำ &amp; โวหารการเขียน (ม.1/2, ม.2/2, ม.2/3)</h3>
+                    <ul>
+                        <li><strong>ใช้ถ้อยคำถูกต้องเหมาะสม:</strong> ไม่ใช้คำฟุ่มเฟือย ไม่ใช้ภาษาพูดปนภาษาเขียน และใช้คำให้ตรงความหมาย</li>
+                        <li><strong>บรรยายโวหาร:</strong> เล่าเรื่องตามลำดับเวลา เหตุการณ์ ใคร ทำอะไร ที่ไหน เมื่อไร</li>
+                        <li><strong>พรรณนาโวหาร:</strong> ใช้ภาพพจน์ คำวิเศษณ์ ถ่ายทอดความงาม/อารมณ์ให้เห็นภาพชัดเจน</li>
+                        <li><strong>เรียงความ:</strong> มี 3 ส่วนคือ <em>คำนำ (ชวนอ่าน) → เนื้อเรื่อง (สาระสำคัญ) → สรุป (ประทับใจ/ข้อคิด)</em></li>
+                    </ul>
+                </div>
+                <div class="note-box amber">
+                    <h3>2. จดหมายกิจธุระ (ม.2/6) — เชิญ / ขอบคุณวิทยากร</h3>
+                    <ul>
+                        <li><strong>คำขึ้นต้น:</strong> เรียน + ชื่อ/ตำแหน่ง (เช่น เรียน ผู้อำนวยการ..., เรียน คุณ...)</li>
+                        <li><strong>คำลงท้าย:</strong> ขอแสดงความนับถือ</li>
+                        <li><strong>สรรพนาม:</strong> ผู้เขียนใช้ <em>ข้าพเจ้า / กระผม / ดิฉัน / ทางโรงเรียน</em> | ผู้รับใช้ <em>ท่าน</em></li>
+                        <li><strong>ใจความสำคัญ:</strong> เชิญวิทยากร ต้องระบุ <em>วัน เวลา สถานที่ หัวข้อเรื่อง และกลุ่มผู้ฟัง</em> ให้ชัดเจน</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rubric-box">
+                <h3 style="color:#9a3412; font-size:1.3rem; margin-bottom:10px;">🔥 เจาะลึกข้อสอบรูปแบบผสมผสาน (ปรนัยและอัตนัย) : 1 ข้อ = 30.00 คะแนนเต็ม!</h3>
+                <p style="margin-bottom:10px;">ออกใน 3 ตัวชี้วัดหลัก คือ <strong>ม.3/4 (เขียนย่อความ)</strong>, <strong>ม.3/6 (เขียนอธิบาย ชี้แจง แสดงความคิดเห็นโต้แย้งอย่างมีเหตุผล)</strong> และ <strong>ม.3/7 (เขียนวิเคราะห์ วิจารณ์สื่อ เช่น บทโฆษณา / บทความวิชาการ)</strong></p>
+                <table class="pastel-table">
+                    <thead>
+                        <tr>
+                            <th>ทักษะที่ออกสอบ</th>
+                            <th>สูตรเขียนให้ได้คะแนนเต็ม (Checklist)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. เขียนย่อความ (ม.3/4)</strong></td>
+                            <td>① ใช้สรรพนามบุรุษที่ 3 (ตัด "ฉัน/เรา/เธอ" ออก)<br>② เก็บใจความสำคัญครบ ตัดรายละเอียดปลีกย่อย/ตัวอย่าง<br>③ เรียบเรียงด้วยภาษาของตนเอง ไม่ลอกข้อความเดิมทั้งดุ้น</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. อธิบาย ชี้แจง โต้แย้ง (ม.3/6)</strong></td>
+                            <td>① ระบุจุดยืนชัดเจน (เห็นด้วย/ไม่เห็นด้วย/เห็นด้วยบางส่วน)<br>② ยกเหตุผลสนับสนุนอย่างน้อย 2–3 ประเด็น พร้อมตัวอย่าง/หลักฐาน<br>③ ใช้ภาษาสุภาพ เป็นเหตุเป็นผล ไม่ใช้อารมณ์โจมตี</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. วิเคราะห์ วิจารณ์สื่อ (ม.3/7)</strong></td>
+                            <td>① ระบุจุดประสงค์ของสื่อ (โฆษณาชวนเชื่อ vs วิชาการให้ความรู้)<br>② ชี้กลวิธีหรือข้อสังเกต (คำโฆษณาเกินจริง สถิติ แหล่งอ้างอิง)<br>③ ประเมินความน่าเชื่อถือและให้ข้อเสนอแนะสำหรับผู้รับสาร</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="notebook-page" id="stage3">
+            <div class="stage-header s3">
+                <div>
+                    <h2>🎧 ด่านที่ 3 : การฟัง การดู และการพูด (มาตรฐาน ท 3.1)</h2>
+                    <p>4 ตัวชี้วัด (ม.2/2, ม.3/2, ม.3/4, ม.3/5)</p>
+                </div>
+                <div class="stage-badge">4 ข้อ • 9.44 คะแนน (4 ตัวเลือก)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box mint">
+                    <h3>1. วิเคราะห์ข่าวสารและสื่อที่ฟัง-ดู (ม.2/2, ม.3/2)</h3>
+                    <ul>
+                        <li><strong>ความน่าเชื่อถือของข่าวสาร:</strong> ตรวจสอบแหล่งที่มา วันเวลาที่เผยแพร่ หลักฐานอ้างอิง และแยก <em>ข้อเท็จจริง</em> ออกจาก <em>อคติ/โฆษณาแฝง</em></li>
+                        <li><strong>การนำข้อคิดไปประยุกต์ใช้:</strong> สกัดสาระสำคัญของเรื่องที่ฟังและดู แล้วเชื่อมโยงกับการแก้ปัญหาในชีวิตประจำวันอย่างมีวิจารณญาณ</li>
+                    </ul>
+                </div>
+                <div class="note-box mint">
+                    <h3>2. การพูดอภิปราย &amp; พูดโน้มน้าวใจ (ม.3/4, ม.3/5)</h3>
+                    <ul>
+                        <li><strong>การอภิปราย:</strong> พูดตรงประเด็น รับฟังผู้อื่น ยอมรับความเห็นต่าง สรุปผลร่วมกัน</li>
+                        <li><strong>การพูดโน้มน้าวใจ:</strong> เรียงลำดับเนื้อหาให้เร้าใจ <em>(ดึงดูดความสนใจ → ชี้ปัญหา → เสนอทางออกพร้อมหลักฐานน่าเชื่อถือ → เชิญชวนให้ปฏิบัติ)</em> ใช้เหตุผลควบคู่ความน่าเชื่อถือ ไม่ขู่เข็ญ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="notebook-page" id="stage4">
+            <div class="stage-header s4">
+                <div>
+                    <h2>⚡ ด่านที่ 4 : หลักการใช้ภาษาไทย (มาตรฐาน ท 4.1)</h2>
+                    <p>8 ตัวชี้วัด (ม.1/3, ม.1/6, ม.2/1, ม.2/2, ม.3/1, ม.3/3, ม.3/4, ม.3/6)</p>
+                </div>
+                <div class="stage-badge">6 ข้อ • 15.72 คะแนน (4 ตัวเลือก 1 + 5 ตัวเลือก 2 คำตอบ 4 + หมวดสัมพันธ์กัน 1)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box purple">
+                    <h3>1. ชนิดของคำ &amp; สำนวน (ม.1/3, ม.1/6)</h3>
+                    <ul>
+                        <li><strong>คำ 7 ชนิด:</strong> นาม สรรพนาม กริยา วิเศษณ์ บุพบท (หน้าคำนาม/สรรพนาม) สันธาน (เชื่อมคำ/ประโยค) อุทาน</li>
+                        <li><strong>จุดหลอกบ่อย:</strong> <em>"กับ แก่ แต่ ต่อ"</em> — ถ้านำหน้านามบอกความสัมพันธ์ = <strong>บุพบท</strong> | ถ้าเชื่อม 2 สิ่งเข้าด้วยกัน = <strong>สันธาน</strong></li>
+                        <li><strong>สำนวน:</strong> คำพังเพย (เปรียบเทียบติชม เช่น <em>ขี่ช้างจับตั๊กแตน</em>) vs สุภาษิต (คำสั่งสอน เช่น <em>ทำดีได้ดี</em>)</li>
+                    </ul>
+                </div>
+                <div class="note-box purple">
+                    <h3>2. การสร้างคำสมาส (ม.2/1)</h3>
+                    <ul>
+                        <li><strong>หลักสังเกต:</strong> นำคำ <strong>บาลี + สันสกฤต</strong> มาชนกัน (แปลจากหลังมาหน้า)</li>
+                        <li><strong>สมาสไม่มีสนธิ:</strong> <em>วิทยา + ศาสตร์ = วิทยาศาสตร์</em>, <em>ราช + การ = ราชการ</em></li>
+                        <li><strong>สมาสแบบสนธิ (เชื่อมเสียง):</strong> <em>มหา + อัศจรรย์ = มหัศจรรย์</em>, <em>สุข + ภาพ = สุขภาพ</em>, <em>วิทยา + อาลัย = วิทยาลัย</em></li>
+                        <li><strong>ระวังตัวลวง:</strong> คำไทยประสม เช่น <em>รถไฟ, แม่น้ำ</em> ไม่ใช่คำสมาส!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box sky">
+                    <h3>3. โครงสร้างประโยค 3 ชนิด (ม.2/2)</h3>
+                    <ul>
+                        <li><strong>ประโยคสามัญ (ความเดียว):</strong> มีกริยาหลักตัวเดียว ใจความเดียว (แม้จะยาวและมีคำขยายมาก)</li>
+                        <li><strong>ประโยครวม (ความรวม):</strong> เชื่อมด้วยสันธาน เช่น <em>และ หรือ แต่ จึง เพราะ...จึง</em> (คล้อยตาม, ขัดแย้ง, เลือก, เหตุผล)</li>
+                        <li><strong>ประโยคซ้อน (ความซ้อน):</strong> มีประโยคหลัก + ประโยคย่อย เชื่อมด้วย <em>ที่ ซึ่ง อัน ผู้ เมื่อ เพราะว่า โดยที่</em></li>
+                    </ul>
+                </div>
+                <div class="note-box pink">
+                    <h3>4. คำต่างประเทศ &amp; ทับศัพท์-ศัพท์บัญญัติ (ม.3/1, ม.3/4)</h3>
+                    <ul>
+                        <li><strong>บาลี-สันสกฤต:</strong> หลายพยางค์ การันต์ ตัวสะกดไม่ตรงมาตรา (ศ ษ ส ฤ ฤๅ ฑ ฒ ณ)</li>
+                        <li><strong>เขมร:</strong> <em>บัง บัน บำ</em>, ควบกล้ำ/อักษรนำ, สะกดด้วย <em>จ ญ ร ล ส</em> (เช่น เสด็จ เจริญ ถนน)</li>
+                        <li><strong>จีน:</strong> อาหาร/เครื่องใช้ มักมีวรรณยุกต์ตรี-จัตวา (เช่น ก๋วยเตี๋ยว เกี๊ยว โต๊ะ เก้าอี้)</li>
+                        <li><strong>ทับศัพท์ vs ศัพท์บัญญัติ:</strong> ทับศัพท์ = ถอดเสียงตรง (<em>คอมพิวเตอร์, แอปพลิเคชัน</em>) | ศัพท์บัญญัติ = สร้างคำไทยใหม่ (<em>สมองกล, โปรแกรมประยุกต์, ปัญญาประดิษฐ์</em>)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box amber" style="margin-bottom:18px;">
+                <h3>5. ระดับภาษา 5 ระดับ (ม.3/3)</h3>
+                <p><strong>พิธีการ</strong> (กล่าวสุนทรพจน์/ถวายพระพร) ➔ <strong>ทางการ</strong> (หนังสือราชการ/บทความวิชาการ) ➔ <strong>กึ่งทางการ</strong> (ข่าว/การประชุมกลุ่ม) ➔ <strong>สนทนา</strong> (พูดคุยสุภาพทั่วไป) ➔ <strong>กันเอง</strong> (พูดกับเพื่อนสนิท/ครอบครัว)</p>
+            </div>
+
+            <div class="klong-diagram">
+                <h3 style="color:#6d28d9; margin-bottom:8px;">6. ผังฉันทลักษณ์ โคลงสี่สุภาพ (ม.3/6) — จำแม่น "เอก 7 โท 4"</h3>
+                <div>บาทที่ 1 : ○ ○ ○ <span class="ek">เอก</span> <span class="tho">โท</span> &nbsp;&nbsp;|&nbsp;&nbsp; ○ ○ (○ ○)</div>
+                <div>บาทที่ 2 : ○ <span class="ek">เอก</span> ○ ○ <span class="tho">โท</span> &nbsp;&nbsp;|&nbsp;&nbsp; <span class="ek">เอก</span> <span class="tho">โท</span> ○ ○</div>
+                <div>บาทที่ 3 : ○ ○ ○ <span class="ek">เอก</span> ○ &nbsp;&nbsp;|&nbsp;&nbsp; ○ <span class="ek">เอก</span></div>
+                <div>บาทที่ 4 : ○ <span class="ek">เอก</span> ○ ○ <span class="tho">โท</span> &nbsp;&nbsp;|&nbsp;&nbsp; <span class="ek">เอก</span> <span class="tho">โท</span> ○ ○</div>
+                <p style="font-size:0.95rem; color:#475569; margin-top:8px;">* บังคับเอก 7 แห่ง, โท 4 แห่ง | ใช้ <strong>คำตาย</strong> แทนคำเอกได้ | คำสร้อยเติมได้ท้ายบาทที่ 1 และบาทที่ 3</p>
+            </div>
+        </div>
+
+        <!-- Stage 5 -->
+        <div class="notebook-page" id="stage5">
+            <div class="stage-header s5">
+                <div>
+                    <h2>🌸 ด่านที่ 5 : วรรณคดีและวรรณกรรม (มาตรฐาน ท 5.1)</h2>
+                    <p>4 ตัวชี้วัด (ม.2/2, ม.3/1, ม.3/2, ม.3/3)</p>
+                </div>
+                <div class="stage-badge">3 ข้อ • 7.08 คะแนน (4 ตัวเลือก)</div>
+            </div>
+
+            <div class="grid-2">
+                <div class="note-box pink">
+                    <h3>1. แนวข้อสอบวรรณคดี ม.3 (ม.2/2, ม.3/1)</h3>
+                    <ul>
+                        <li><strong>ประเภทกลอน:</strong> วิเคราะห์ขนบธรรมเนียมประเพณี การยอพระเกียรติ วรรณกรรมท้องถิ่น เรื่องสั้น และสารคดี</li>
+                        <li><strong>ประเภทโคลงสี่สุภาพ:</strong> คำสอนและประวัติศาสตร์ (เช่น โคลงโลกนิติ, โคลงภาพพระราชพงศาวดาร) และ <strong>วรรณกรรมอาเซียน</strong></li>
+                    </ul>
+                </div>
+                <div class="note-box pink">
+                    <h3>2. การวิเคราะห์คุณค่าและวิถีไทย (ม.3/2, ม.3/3)</h3>
+                    <ul>
+                        <li><strong>คุณค่าด้านวรรณศิลป์:</strong> การเล่นคำ เล่นเสียง สัมผัส อุปมา บุคคลวัต อติพจน์</li>
+                        <li><strong>คุณค่าด้านสังคมและวิถีไทย:</strong> สะท้อนความเชื่อ ประเพณี ค่านิยม ความกตัญญู การประกอบอาชีพ</li>
+                        <li><strong>ข้อคิดประยุกต์ใช้:</strong> ถอดบทเรียนจากตัวละคร/คำสอน มาใช้แก้ปัญหาชีวิตจริง</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
