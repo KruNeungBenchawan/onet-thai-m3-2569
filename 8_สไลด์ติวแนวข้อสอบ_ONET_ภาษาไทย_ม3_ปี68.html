@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สไลด์ติวแนวข้อสอบ O-NET ภาษาไทย ม.3 ปีการศึกษา 2568 (ครบ 29 ข้อ + เฉลยละเอียด)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kodchasan:wght@400;500;600;700&family=Mali:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1e3a5f;
+            --card-bg: #ffffff;
+            --primary: #0284c7;
+            --primary-light: #0ea5e9;
+            --accent: #f59e0b;
+            --success: #059669;
+            --danger: #e11d48;
+            --text-main: #1e293b;
+            --text-muted: #475569;
+            --zoom: 1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Mali', 'Kodchasan', 'Sarabun', Tahoma, sans-serif;
+            background: linear-gradient(180deg, #38bdf8 0%, #bae6fd 52%, #a7f3d0 78%, #4ade80 100%);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        body::before {
+            content: "☁️   ☁️      ☁️";
+            position: fixed;
+            top: 74px;
+            left: 5%;
+            right: 5%;
+            font-size: 2.6rem;
+            opacity: 0.55;
+            pointer-events: none;
+            letter-spacing: 80px;
+            z-index: 0;
+        }
+        .topbar {
+            background: linear-gradient(90deg, #1e3a8a 0%, #4338ca 50%, #7c3aed 100%);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            padding: 10px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #fde047;
+            height: 64px;
+            flex-shrink: 0;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .topbar-title {
+            font-family: 'Kodchasan', 'Mali', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .badge-year {
+            background: #fde047;
+            color: #1e1b4b;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+        .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .btn {
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.45);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-family: 'Kodchasan', 'Mali', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn:hover { background: #ec4899; border-color: #fbcfe8; transform: translateY(-1px); }
+        .btn-primary { background: #0ea5e9; border-color: #bae6fd; }
+        .btn-accent { background: #fde047; color: #1e1b4b; border-color: #f59e0b; }
+        .btn-accent:hover { background: #facc15; color: #000; }
+        .btn-sound { background: #10b981; border-color: #a7f3d0; color: #fff; }
+        .btn-sound.muted { background: #64748b; border-color: #cbd5e1; }
+        .slide-select {
+            background: #1e1b4b;
+            color: #fff;
+            border: 2px solid #818cf8;
+            padding: 6px 10px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            max-width: 245px;
+        }
+        .stage {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 1320px;
+            height: 100%;
+            background: #fffdf7;
+            background-image:
+                radial-gradient(circle at 95% 8%, rgba(253, 224, 71, 0.22) 0%, transparent 28%),
+                radial-gradient(circle at 6% 92%, rgba(244, 114, 182, 0.16) 0%, transparent 28%),
+                radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+            background-size: 100% 100%, 100% 100%, 24px 24px;
+            border-radius: 32px;
+            border: 5px solid #f59e0b;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25), inset 0 0 0 4px #fef3c7;
+            padding: 20px 34px;
+            flex-direction: column;
+            overflow-y: auto;
+            position: relative;
+        }
+        .slide.active { display: flex; animation: popIn 0.22s ease-out; }
+        @keyframes popIn {
+            from { opacity: 0.6; transform: scale(0.985); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px dashed #fbbf24;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            gap: 14px;
+        }
+        .slide-header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex: 1;
+        }
+        .mascot-badge {
+            flex-shrink: 0;
+            width: 76px;
+            height: 76px;
+            background: #ffffff;
+            border: 3.5px solid #f59e0b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 0 #d97706;
+            animation: floatMascot 3s ease-in-out infinite;
+        }
+        .mascot-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        @keyframes floatMascot {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-5px) rotate(2deg); }
+        }
+        .slide-title {
+            font-family: 'Kodchasan', 'Sarabun', sans-serif;
+            font-size: calc(1.82rem * var(--zoom));
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.35;
+        }
+        .strand-tag {
+            background: linear-gradient(90deg, #fce7f3, #ede9fe);
+            color: #9d174d;
+            border: 2px solid #f472b6;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.96rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .slide-body {
+            flex: 1;
+            font-family: 'Sarabun', 'Kodchasan', sans-serif;
+            font-size: calc(1.32rem * var(--zoom));
+            font-weight: 600;
+            line-height: 1.7;
+            color: #0f172a;
+        }
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            margin-top: auto;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .corner-deco {
+            font-size: 1.3rem;
+            user-select: none;
+        }
+        .passage-box {
+            background: #fef9c3;
+            border: 2.5px solid #facc15;
+            border-left: 8px solid #f59e0b;
+            border-radius: 18px;
+            padding: 16px 22px;
+            margin-bottom: 16px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: calc(1.34rem * var(--zoom));
+            font-weight: 600;
+            line-height: 1.72;
+            color: #0f172a;
+            box-shadow: 0 4px 0 #fef08a;
+        }
+        .poem-box {
+            background: #fdf4ff;
+            border: 2.5px solid #d8b4fe;
+            border-left: 8px solid #9333ea;
+            border-radius: 18px;
+            padding: 16px 26px;
+            margin-bottom: 16px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: calc(1.48rem * var(--zoom));
+            font-weight: 700;
+            line-height: 1.75;
+            color: #0f172a;
+            display: grid;
+            grid-template-columns: max-content max-content;
+            gap: 6px 42px;
+            justify-content: center;
+            box-shadow: 0 4px 0 #f3e8ff;
+        }
+        .question-text {
+            font-family: 'Kodchasan', 'Sarabun', sans-serif;
+            font-weight: 700;
+            font-size: calc(1.5rem * var(--zoom));
+            color: #0f172a;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        .choices-grid { display: grid; grid-template-columns: 1fr; gap: 11px; margin-bottom: 14px; }
+        .choice-btn {
+            background: #ffffff;
+            border: 2.5px solid #94a3b8;
+            border-radius: 16px;
+            padding: 13px 20px;
+            text-align: left;
+            font-family: 'Sarabun', sans-serif;
+            font-size: calc(1.34rem * var(--zoom));
+            font-weight: 600;
+            color: #0f172a;
+            line-height: 1.55;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 0 #cbd5e1;
+            transition: all 0.15s;
+        }
+        .choice-btn:hover { background: #f0f9ff; border-color: #0284c7; transform: translateX(4px); }
+        .choice-btn.selected-multi { background: #e0f2fe; border-color: #0284c7; font-weight: 700; box-shadow: 0 3px 0 #7dd3fc; }
+        .choice-btn.correct-revealed { background: #dcfce7; border-color: #16a34a; color: #14532d; font-weight: 700; box-shadow: 0 3px 0 #86efac; }
+        .choice-btn.wrong-selected { background: #ffe4e6; border-color: #e11d48; color: #881337; box-shadow: 0 3px 0 #fda4af; }
+        .choice-status { font-weight: 700; font-size: 1.05rem; margin-left: 12px; flex-shrink: 0; }
+        .answer-panel {
+            display: none;
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            border: 3px solid #10b981;
+            border-radius: 18px;
+            padding: 16px 22px;
+            margin-top: 12px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: calc(1.28rem * var(--zoom));
+            font-weight: 600;
+            line-height: 1.68;
+            color: #064e3b;
+            box-shadow: 0 5px 0 #a7f3d0;
+            animation: popIn 0.2s ease-out;
+        }
+        .answer-panel.visible { display: block; }
+        .sparkle-burst {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.6rem;
+            z-index: 9999;
+            animation: sparkleFly 0.9s ease-out forwards;
+        }
+        @keyframes sparkleFly {
+            0% { opacity: 1; transform: translate(0, 0) scale(0.7) rotate(0deg); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.3) rotate(180deg); }
+        }
+        .cover-slide {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fefce8 50%, #fdf2f8 100%);
+        }
+        .match-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        .match-col {
+            background: #f8fafc;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 14px;
+        }
+        .match-col h4 {
+            color: #0369a1;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        @media (max-width: 720px) {
+            .topbar { height: auto; padding: 10px 14px; }
+            .slide { padding: 18px 16px; }
+            .poem-box { grid-template-columns: 1fr; gap: 2px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="topbar-title">
+            <a class="btn" href="index.html">🏠 หน้าหลัก</a>
+            <span>📘 สไลด์ติวแนวข้อสอบ O-NET ภาษาไทย ม.3</span>
+            <span class="badge-year">ปี 2568 • 29 ข้อ</span>
+            <a class="btn" href="โอเน็ต ม.3 68.pdf" target="_blank">📄 เปิดไฟล์ PDF ต้นฉบับ</a>
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="prevSlide()">◀ ก่อนหน้า</button>
+            <select class="slide-select" id="slideSelector" onchange="goToSlide(this.value)"></select>
+            <span id="slideCounter" style="font-weight:700; min-width:65px; text-align:center;">1 / 31</span>
+            <button class="btn btn-primary" onclick="nextSlide()">ถัดไป ▶</button>
+            <button class="btn btn-accent" id="globalRevealBtn" onclick="toggleCurrentAnswer()" style="display:none;">💡 เปิด/ซ่อนเฉลย</button>
+            <button class="btn btn-sound" id="soundToggleBtn" onclick="toggleSound()">🔊 เสียง: เปิด</button>
+            <button class="btn" onclick="zoomText(0.1)" title="ขยายขนาดตัวอักษร">🔍 A+</button>
+            <button class="btn" onclick="zoomText(-0.1)" title="ย่อขนาดตัวอักษร">🔍 A-</button>
+            <button class="btn" onclick="toggleFullScreen()">⛶ เต็มจอ</button>
+        </div>
+    </div>
+
+    <div class="stage" id="slidesContainer"></div>
+
+    <script>
+        const slidesData = [
+            {
+                type: 'cover',
+                menuTitle: '0. หน้าปก : แนวข้อสอบ O-NET ภาษาไทย ม.3 ปี 2568',
+                html: `
+                    <div style="max-width:860px; margin:auto;">
+                        <div style="display:flex; justify-content:center; gap:16px; align-items:center; margin-bottom:14px;">
+                            <div class="mascot-badge" style="width:92px; height:92px; border-radius:50%;">${getMascotSvg(0)}</div>
+                            <div class="mascot-badge" style="width:92px; height:92px; border-radius:50%; background:linear-gradient(135deg,#fbcfe8,#f472b6); border-color:#db2777; box-shadow:0 5px 0 #9d174d; animation-delay:0.4s;">${getMascotSvg(1)}</div>
+                            <div class="mascot-badge" style="width:92px; height:92px; border-radius:50%; background:linear-gradient(135deg,#bae6fd,#38bdf8); border-color:#0284c7; box-shadow:0 5px 0 #0369a1; animation-delay:0.8s;">${getMascotSvg(2)}</div>
+                        </div>
+                        <div style="display:inline-block; background:#fde047; color:#1e1b4b; padding:8px 22px; border-radius:999px; font-weight:800; margin-bottom:16px; border:2px solid #eab308;">
+                            ✨ แนวข้อสอบ O-NET วิชาภาษาไทย ชั้นมัธยมศึกษาปีที่ 3 ปีการศึกษา 2568
+                        </div>
+                        <h1 style="font-size:2.35rem; color:#0c4a6e; margin-bottom:12px; line-height:1.3;">ติวเข้มแนวข้อสอบ O-NET ภาษาไทย ม.3 (ปี 2568)</h1>
+                        <p style="font-size:1.18rem; color:#475569; margin-bottom:22px;">ฝึกทำข้อสอบจริงแบบโต้ตอบทีละข้อ ครบทั้ง 29 ข้อ พร้อมเสียงประกอบและเฉลยทุกข้อ</p>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:22px;">
+                            <div style="background:#e0f2fe; border:2.5px solid #0284c7; border-radius:18px; padding:14px; box-shadow:0 4px 0 #bae6fd;"><strong>🎯 ตอนที่ 1 : ปรนัย 4 ตัวเลือก</strong><br>ข้อ 1 – 21 และ 23 – 25 (24 ข้อ)</div>
+                            <div style="background:#f3e8ff; border:2.5px solid #7c3aed; border-radius:18px; padding:14px; box-shadow:0 4px 0 #ddd6fe;"><strong>🔗 หมวดสัมพันธ์กัน</strong><br>ข้อ 22 (เติมคำประพันธ์ + ข้อคิด)</div>
+                            <div style="background:#fef3c7; border:2.5px solid #d97706; border-radius:18px; padding:14px; box-shadow:0 4px 0 #fde68a;"><strong>☑️ ตอนที่ 2 : ปรนัย 5 ตัวเลือก</strong><br>ข้อ 26 – 29 (เลือก 2 คำตอบ)</div>
+                        </div>
+                        <div style="background:#ffffff; border:3px solid #f472b6; border-radius:20px; padding:10px 22px; display:inline-block; color:#be185d; font-weight:700; font-size:0.98rem; box-shadow:0 4px 0 #fbcfe8;">
+                            👩‍🏫 สื่อการสอนห้องเรียนครูเบ็ญจวรรณ สิงห์กุล | โรงเรียนวัดราษฎร์บำรุง สพป.สระบุรี เขต 2
+                        </div>
+                    </div>
+                `
+            },
+            {
+                menuTitle: 'ข้อ 1 : ข้อเท็จจริงของคำประพันธ์',
+                title: 'ข้อ 1. ข้อใดเป็นข้อเท็จจริงของคำประพันธ์ต่อไปนี้',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q1',
+                quizType: 'single',
+                correctIndex: 0,
+                poem: [
+                    ['อันข้าไทได้พึ่งเขาจึงรัก', 'แม้นถอยศักดิ์สิ้นอำนาจวาสนา'],
+                    ['เขาหน่ายหนีมิได้อยู่คู่ชีวา', 'แต่วิชาช่วยกายจนวายปราณ']
+                ],
+                choices: [
+                    '๑. ความรู้เป็นประโยชน์ต่อเราไปจนตาย',
+                    '๒. พอเราสิ้นอำนาจวาสนา เขาก็คงจะทิ้งเราไป',
+                    '๓. คนที่รักเราสักวันหนึ่งเขาก็อาจจะหมดรักเราแล้วก็ได้',
+                    '๔. แม้ว่าเราจะตายไปแล้วแต่ศักดิ์ศรีของเราน่าจะยังคงอยู่'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — สอดคล้องกับบาทสุดท้าย "แต่วิชาช่วยกายจนวายปราณ" ส่วนข้อ ๒, ๓, ๔ มีคำแสดงการคาดคะเน ("คงจะ", "อาจจะ", "น่าจะ") ซึ่งเป็นข้อคิดเห็น'
+            },
+            {
+                menuTitle: 'ข้อ 2 : คำที่มีความหมายโดยนัย',
+                title: 'ข้อ 2. ข้อใดมีคำที่มีความหมายโดยนัย',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q2',
+                quizType: 'single',
+                correctIndex: 3,
+                choices: [
+                    '๑. ต้นไม้ต้นนี้น่าจะตายในไม่ช้าเพราะมีกาฝากจำนวนมาก',
+                    '๒. ลูกหมูตัวนั้นอยู่นอกคอก ไม่ยอมเข้ามานอนเสียที',
+                    '๓. พ่อถือหางไก่เพื่อเช็ดทำความสะอาดก่อนลงแข่ง',
+                    '๔. เขาทำตัวเป็นแกะดำ เพื่อนเลยไม่อยากคุยด้วย'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔</strong> — "แกะดำ" มีความหมายโดยนัย หมายถึง คนแปลกแยกหรือคนที่ทำตัวแตกต่างจากคนอื่นในกลุ่ม ส่วนข้อ ๑–๓ ใช้ความหมายโดยตรงทั้งหมด'
+            },
+            {
+                menuTitle: 'ข้อ 3 : วิธีการขยายความ (เมฆ)',
+                title: 'ข้อ 3. ข้อความข้างต้นไม่มีวิธีการขยายความแบบใด',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q3',
+                quizType: 'single',
+                correctIndex: 3,
+                passage: 'อ่านข้อความต่อไปนี้แล้วตอบคำถามข้อ ๓ – ๔<br>"เมฆสามารถจำแนกออกเป็น ๓ ชนิด ได้แก่ เมฆชั้นสูง เมฆชั้นกลาง และเมฆชั้นต่ำ เมฆชั้นสูง เช่น เมฆเซอรัส มีลักษณะเป็นเส้นบางเบา สีขาวโปร่งใส มักปรากฏในสภาพอากาศแจ่มใสที่ปราศจากความชื้นมาก เมฆชั้นกลาง เช่น เมฆอัลโตคิวมูลัส มักเกิดในระดับความสูงปานกลาง ลักษณะเป็นก้อนหรือเป็นชั้นหนา สีขาวหรือเทาอ่อน บ่งชี้ถึงการเปลี่ยนแปลงของสภาพอากาศ ส่วนเมฆชั้นต่ำ เช่น เมฆคิวมูลัส มีลักษณะเป็นก้อนหนาสีขาวหรือเทาเข้ม มักพบใกล้พื้นดินและเกี่ยวข้องกับการเกิดฝนหรือพายุในบางกรณี การที่นักอุตุนิยมวิทยาจำแนกเมฆทั้งสามชนิดนี้ได้จึงเป็นส่วนสำคัญในการกำหนดสภาพภูมิอากาศและการเปลี่ยนแปลงของบรรยากาศ"',
+                choices: [
+                    '๑. ให้เหตุผล',
+                    '๒. ยกตัวอย่าง',
+                    '๓. ให้รายละเอียด',
+                    '๔. อธิบายความหมาย'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔</strong> — ข้อความมีการยกตัวอย่าง ("เช่น เมฆเซอรัส..."), ให้รายละเอียด (ลักษณะ สี ระดับความสูง) และให้เหตุผล ("การที่นักอุตุนิยมวิทยาจำแนกเมฆทั้งสามชนิดนี้ได้จึงเป็นส่วนสำคัญ...") แต่ไม่มีการอธิบายความหมายของคำว่าเมฆ'
+            },
+            {
+                menuTitle: 'ข้อ 4 : ประเด็นหลักของข้อความ (เมฆ)',
+                title: 'ข้อ 4. ข้อใดเป็นประเด็นหลักของข้อความข้างต้น',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q4',
+                quizType: 'single',
+                correctIndex: 2,
+                passage: '"เมฆสามารถจำแนกออกเป็น ๓ ชนิด ได้แก่ เมฆชั้นสูง เมฆชั้นกลาง และเมฆชั้นต่ำ... เมฆชั้นสูง เช่น เมฆเซอรัส... เมฆชั้นกลาง เช่น เมฆอัลโตคิวมูลัส... ส่วนเมฆชั้นต่ำ เช่น เมฆคิวมูลัส... การที่นักอุตุนิยมวิทยาจำแนกเมฆทั้งสามชนิดนี้ได้จึงเป็นส่วนสำคัญในการกำหนดสภาพภูมิอากาศและการเปลี่ยนแปลงของบรรยากาศ"',
+                choices: [
+                    '๑. ธรรมชาติของฝนและฤดูกาล',
+                    '๒. จินตนาการเกี่ยวกับเมฆและสีสัน',
+                    '๓. ลักษณะต่าง ๆ ของเมฆบนท้องฟ้า',
+                    '๔. การเปลี่ยนแปลงของสภาพภูมิอากาศ'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓</strong> — เนื้อหาทั้งหมดมุ่งจำแนกชนิดและบรรยายลักษณะของเมฆทั้ง ๓ ชั้น (สูง กลาง ต่ำ)'
+            },
+            {
+                menuTitle: 'ข้อ 5 : กลวิธีเปรียบเทียบ (สังคมผู้สูงอายุ)',
+                title: 'ข้อ 5. ข้อความตอนใดอธิบายโดยกลวิธีเปรียบเทียบ',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q5',
+                quizType: 'single',
+                correctIndex: 2,
+                passage: '๑) ประเทศไทยก้าวเข้าสู่สังคมผู้สูงอายุมาตั้งแต่ปี ๒๕๕๘ โดยมีอัตราการเพิ่มของประชากรผู้สูงอายุอย่างรวดเร็ว และคาดว่าในปี ๒๕๘๓ จะมีประชากรผู้สูงวัยที่มีอายุ ๘๐ ปีขึ้นไปเพิ่มขึ้นอีกเกือบเท่าตัว ๒) เมื่อคนยิ่งมีอายุมากขึ้น ยิ่งมีโอกาสเสี่ยงต่อความเจ็บป่วยและความพิการหรือช่วยเหลือตัวเองไม่ได้เพิ่มขึ้น ๓) ในอนาคตจะยิ่งมีผู้สูงวัยจำนวนมากขึ้น ความต้องการการดูแลระยะยาวสำหรับผู้สูงอายุก็จะมากขึ้นเป็นเงาตามตัว ๔) จากความตื่นตัวต่อประเด็นดังกล่าว จึงมีการจัดตั้ง "โรงเรียนผู้สูงอายุ" เพื่อเป็นพื้นที่ทางสังคมและสร้างความสุขให้แก่ผู้สูงอายุ นับเป็นอีกแนวทางในการรับมือกับสถานการณ์ผู้สูงอายุ',
+                choices: [
+                    '๑. ตอนที่ ๑)',
+                    '๒. ตอนที่ ๒)',
+                    '๓. ตอนที่ ๓)',
+                    '๔. ตอนที่ ๔)'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓</strong> — ตอนที่ ๓) ใช้สำนวนเปรียบเทียบว่า "มากขึ้นเป็นเงาตามตัว"'
+            },
+            {
+                menuTitle: 'ข้อ 6 : สาระสำคัญของเรื่อง (บ้านบางเสด็จ)',
+                title: 'ข้อ 6. ข้อความตอนใดเป็นสาระสำคัญของเรื่อง',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q6',
+                quizType: 'single',
+                correctIndex: 0,
+                passage: 'อ่านข้อความต่อไปนี้แล้วตอบคำถามข้อ ๖ – ๗<br>๑) บ้านบางเสด็จ อำเภอป่าโมก จังหวัดอ่างทอง ประสบอุทกภัยต่อเนื่องมาหลายปี เมื่อปี พ.ศ. ๒๕๑๙ สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถในรัชกาลที่ ๙ จึงได้พระราชทานอาชีพปั้นตุ๊กตาชาววังเป็นอาชีพเสริม ๒) เพราะทรงเห็นว่าชาวบ้านบางเสด็จส่วนใหญ่ประกอบอาชีพการทำอิฐบล็อก และก้านธูปที่ใช้ดินอยู่แล้ว ๓) ทรงพระกรุณาโปรดเกล้าโปรดกระหม่อมให้อาจารย์จากวิทยาลัยเพาะช่างมาสอนปั้นตุ๊กตาชาววังหลักสูตร ๓ เดือน ๔) ปัจจุบันบ้านบางเสด็จเป็นแหล่งท่องเที่ยวที่มีชื่อเสียงด้านการปั้นตุ๊กตาชาววัง',
+                choices: [
+                    '๑. ตอนที่ ๑)',
+                    '๒. ตอนที่ ๒)',
+                    '๓. ตอนที่ ๓)',
+                    '๔. ตอนที่ ๔)'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — ตอนที่ ๑) เป็นใจความหลักที่กล่าวถึงที่มาของการพระราชทานอาชีพปั้นตุ๊กตาชาววังให้แก่ชาวบ้านบางเสด็จ ส่วนตอนที่ ๒–๔ เป็นรายละเอียดขยายความ'
+            },
+            {
+                menuTitle: 'ข้อ 7 : การอนุมาน (บ้านบางเสด็จ)',
+                title: 'ข้อ 7. ข้อใดไม่สามารถอนุมานได้จากข้อความข้างต้น',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q7',
+                quizType: 'single',
+                correctIndex: 2,
+                passage: '๑) บ้านบางเสด็จ อำเภอป่าโมก จังหวัดอ่างทอง ประสบอุทกภัยต่อเนื่องมาหลายปี เมื่อปี พ.ศ. ๒๕๑๙ สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถในรัชกาลที่ ๙ จึงได้พระราชทานอาชีพปั้นตุ๊กตาชาววังเป็นอาชีพเสริม ๒) เพราะทรงเห็นว่าชาวบ้านบางเสด็จส่วนใหญ่ประกอบอาชีพการทำอิฐบล็อก และก้านธูปที่ใช้ดินอยู่แล้ว ๓) ทรงพระกรุณาโปรดเกล้าโปรดกระหม่อมให้อาจารย์จากวิทยาลัยเพาะช่างมาสอนปั้นตุ๊กตาชาววังหลักสูตร ๓ เดือน ๔) ปัจจุบันบ้านบางเสด็จเป็นแหล่งท่องเที่ยวที่มีชื่อเสียงด้านการปั้นตุ๊กตาชาววัง',
+                choices: [
+                    '๑. ตุ๊กตาชาววังเป็นที่ชื่นชอบของนักท่องเที่ยวจำนวนมาก',
+                    '๒. ชาวบ้านบ้านบางเสด็จมีรายได้เพิ่มขึ้นจากการปั้นตุ๊กตาชาววัง',
+                    '๓. ปัจจุบันปัญหาน้ำท่วมบ้านบางเสด็จยังไม่ได้รับการแก้ไขแต่อย่างใด',
+                    '๔. บ้านบางเสด็จมีดินคุณภาพเหมาะแก่การปั้นอิฐบล็อก ก้านธูป และตุ๊กตาชาววัง'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓</strong> — ข้อความกล่าวเพียงว่าในอดีตเคยประสบอุทกภัย ไม่ได้กล่าวถึงสถานการณ์น้ำท่วมในปัจจุบัน จึงไม่สามารถอนุมานได้'
+            },
+            {
+                menuTitle: 'ข้อ 8 : ปฏิบัติตามวัตถุประสงค์ของข้อความ',
+                title: 'ข้อ 8. บุคคลในข้อใดปฏิบัติตามวัตถุประสงค์ของข้อความต่อไปนี้',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q8',
+                quizType: 'single',
+                correctIndex: 2,
+                passage: '"การทำอะไรที่ยังไม่เคยทำ ระยะแรก ๆ อาจดูเหมือนยาก ทำไม่ได้ เพราะต้องลำบากกับการปรับตัว เช่น จะเริ่มวิ่งออกกำลัง ถ้ายังไม่เคยวิ่งมาก่อน แล้วอยากวิ่งอย่างเร็วให้ได้ ๕ กิโลเมตรตามเป้าหมายที่วางไว้ ผลก็คือวันต่อไปจะวิ่งไม่ไหวเพราะอ่อนล้าหมดแรง"',
+                choices: [
+                    '๑. ก้อง ฝึกวาดภาพทุกวันวันละสองชั่วโมงตลอดปิดภาคเรียนเดือนเมษายนจนสามารถส่งเข้าประกวดได้',
+                    '๒. ก้าน เพิ่งทำขนมเค้กชิ้นแรกครั้งเดียวสามปอนด์เพื่อเอาไปร่วมในงานเลี้ยงวันเกิดเพื่อนตอนเย็นวันนั้น',
+                    '๓. กิ่ง ดีใจมากที่ได้เริ่มเรียนกีตาร์จึงตื่นนอนแต่เช้าตรู่ฝึกซ้อมเล่นกีตาร์ถึงค่ำจนไม่ได้ช่วยงานบ้าน',
+                    '๔. แก้ว ใช้เงินออมทั้งหมดเปิดร้านกาแฟโดยไม่ได้ศึกษากลุ่มตลาดก่อนและหวังยอดขายวันละ ๑๐๐ แก้ว'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓ (ตามเฉลยในเอกสาร PDF)</strong> — วัตถุประสงค์ของข้อความคือ การทำสิ่งใดจนเกินพอดี อาจก่อให้เกิดผลเสียได้'
+            },
+            {
+                menuTitle: 'ข้อ 9 : ประเมินคุณค่าข้อความ (ต้มยำกุ้ง)',
+                title: 'ข้อ 9. ข้อใดประเมินคุณค่าข้อความต่อไปนี้ไม่ถูกต้อง',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q9',
+                quizType: 'single',
+                correctIndex: 3,
+                passage: '"ต้มยำกุ้ง เป็นอาหารไทยภาคกลางที่ปรุงรสและดัดแปลงง่ายแล้วแต่ความชอบของผู้บริโภค หากมีปริมาณเนื้อสัตว์น้อยก็สามารถใส่เห็ดฟางเพิ่มโปรตีนโรยหน้าด้วยผักชี หากเป็นฤดูกาลที่หามะนาวยากก็ดัดแปลงใส่น้ำส้มมะขาม ตะลิงปลิง หรือมะดัน เพื่อให้มีรสเปรี้ยวนำรสเค็มและรสเผ็ด ปัจจุบันต้มยำกุ้งเป็นอาหารประเภทแกงประจำชาติไทยที่ชาวต่างชาตินิยมมากที่สุดเพราะมีคุณค่าทางอาหารสูง มีรสเผ็ดไม่มากแต่มีกลิ่นหอมจากพืชผักสมุนไพรที่ช่วยขับเลือดลมให้เดินสะดวก ทำให้มีสุขภาพแข็งแรงจึงได้รับการขึ้นทะเบียนเป็นมรดกภูมิปัญญาทางวัฒนธรรมของชาติประจำปีพุทธศักราช ๒๕๕๔"',
+                choices: [
+                    '๑. มีเนื้อหาสาระให้ความรู้',
+                    '๒. มีหลักฐานอ้างอิงน่าเชื่อถือ',
+                    '๓. ใช้ภาษาถูกต้อง อ่านเข้าใจง่าย',
+                    '๔. เสนอแนวทางการสร้างรายได้ให้ครอบครัว'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔</strong> — ข้อความกล่าวถึงวิธีปรุง คุณค่าทางอาหาร และมรดกภูมิปัญญาทางวัฒนธรรม ไม่ได้เสนอแนวทางการสร้างรายได้ให้ครอบครัว'
+            },
+            {
+                menuTitle: 'ข้อ 10 : การใช้ภาษาในโครงงาน',
+                title: 'ข้อ 10. ข้อใดใช้ภาษาไม่เหมาะสมกับการเขียนโครงงานด้านประวัติวรรณคดีไทย',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q10',
+                quizType: 'single',
+                correctIndex: 0,
+                choices: [
+                    '๑. ด้านสมัยของวรรณคดีไทยถ้าจะแบ่งออกมาเป็นสมัยใหญ่ ๆ จะได้เป็น ๕ สมัยประมาณนี้',
+                    '๒. ศิลาจารึกพ่อขุนรามคำแหงนับได้ว่าเป็นวรรณคดีไทยเรื่องแรกที่ตกทอดมาถึงคนไทยในสมัยปัจจุบัน',
+                    '๓. วรรณคดีสุโขทัยสมัยพุทธศตวรรษที่ ๑๙ มีลักษณะสอดคล้องกับเหตุการณ์ต่าง ๆ ในประวัติศาสตร์',
+                    '๔. ตัวอย่างวรรณคดีที่สำคัญในสมัยสุโขทัย เช่น ศิลาจารึกพ่อขุนรามคำแหง สุภาษิตพระร่วง และไตรภูมิกถา'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — มีภาษาพูดปะปน ("ถ้าจะแบ่งออกมา", "ประมาณนี้") ไม่เหมาะสมกับงานเขียนวิชาการหรือโครงงาน'
+            },
+            {
+                menuTitle: 'ข้อ 11 : โวหารภาพพจน์',
+                title: 'ข้อ 11. ข้อใดเป็นการเขียนพรรณนาโดยใช้โวหารภาพพจน์ที่ต่างกับข้ออื่น',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q11',
+                quizType: 'single',
+                correctIndex: 0,
+                choices: [
+                    '๑. แสงแดดยามเย็นสาดกระทบผืนน้ำเป็นประกายระยิบระยับ',
+                    '๒. แสงแดดที่แรงกล้าขึ้นทุกขณะดังแสงชุบชูกำลังของคนที่นี่',
+                    '๓. แสงไฟหลากสีส่องสว่างเปรียบเหมือนดวงดาวบนท้องฟ้า',
+                    '๔. แสงจันทร์ยามดึกส่องแสงเป็นเสมือนนาฬิกาธรรมชาติบอกเวลาแก่ผีเสื้อราตรี'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — ข้อ ๑ บรรยายภาพให้เห็นชัดเจนโดยไม่ใช้ภาพพจน์เปรียบเทียบ ส่วนข้อ ๒–๔ มีการเปรียบเทียบแบบอุปมา ("ดัง", "เปรียบเหมือน", "เป็นเสมือน")'
+            },
+            {
+                menuTitle: 'ข้อ 12 : ส่วนขยายของข้อความ (แมว)',
+                title: 'ข้อ 12. ข้อความ "แมวมักเป็นตัวของตัวเองโดยจะเห็นได้จากการชอบออกท่องเที่ยวไปตามลำพัง" สามารถใช้เป็นส่วนขยายของตอนใดในข้อความต่อไปนี้',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q12',
+                quizType: 'single',
+                correctIndex: 0,
+                passage: '๑) แมวเป็นสัตว์เลี้ยงที่ค่อนข้างใช้ชีวิตอิสระและไม่ค่อยแยแสกับการอยู่กับมนุษย์ ทำให้ความสัมพันธ์ระหว่างแมวกับมนุษย์มีระยะห่าง ๒) ทักษะการล่าและการจับหนูเป็นสิ่งที่แมวแสดงได้อย่างมีประสิทธิภาพ ในยุคกลางของยุโรป มนุษย์มักจะเลี้ยงแมวไว้เพื่อจับหนู โดยปล่อยให้แมวรู้สึกหิวเพื่อที่จะไล่จับหนูเป็นอาหาร ๓) เมื่อเปรียบเทียบแมวที่ถูกมนุษย์เลี้ยงดูอย่างดีโดยให้อาหารที่อุดมสมบูรณ์กับแมวที่ถูกเลี้ยงโดยให้อาหารปริมาณน้อย พบว่าแมวที่กินดีอยู่ดีจะจับหนูได้น้อยกว่าแมวที่หิวโหย ๔) ในยุคกลางของอังกฤษแมวที่จับหนูได้มากจะถูกให้คุณค่ามากกว่าแมวที่ไม่เก่งในการจับหนู ซึ่งคุณค่านี้ต่างไปจากแมวในยุคปัจจุบันที่มนุษย์มักจะเลี้ยงไว้เพื่อความชอบส่วนบุคคล',
+                choices: [
+                    '๑. ตอนที่ ๑)',
+                    '๒. ตอนที่ ๒)',
+                    '๓. ตอนที่ ๓)',
+                    '๔. ตอนที่ ๔)'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — สามารถใช้เป็นส่วนขยายของตอนที่ ๑) เนื่องจากกล่าวถึงความรักอิสระและความเป็นตัวของตัวเองของแมว'
+            },
+            {
+                menuTitle: 'ข้อ 13 : จดหมายขอบคุณวิทยากร',
+                title: 'ข้อ 13. ข้อใดเป็นข้อความขึ้นต้นในย่อหน้าแรกตามรูปแบบของจดหมายขอบคุณวิทยากร',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q13',
+                quizType: 'single',
+                correctIndex: 0,
+                choices: [
+                    '๑. ตามที่โรงเรียนได้รับความอนุเคราะห์จากท่านมาเป็นวิทยากรบรรยาย...',
+                    '๒. ตามที่โรงเรียนขอขอบคุณท่านเป็นอย่างยิ่งที่มาบรรยายให้ความรู้แก่เรา...',
+                    '๓. ตามที่โรงเรียนหวังว่าจะได้รับความอนุเคราะห์จากท่านอีกในโอกาสต่อไป...',
+                    '๔. ตามที่โรงเรียนได้จัดกิจกรรมวันภาษาไทยและเห็นว่าท่านเป็นผู้ทรงคุณวุฒิ...'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — ย่อหน้าแรกของจดหมายขอบคุณวิทยากรจะอ้างถึงเหตุการณ์ที่ได้รับความอนุเคราะห์มาก่อน แล้วจึงกล่าวขอบคุณในย่อหน้าถัดไป'
+            },
+            {
+                menuTitle: 'ข้อ 14 : การอธิบายอย่างมีเหตุผล (มารี คูรี)',
+                title: 'ข้อ 14. ข้อความใดเขียนอธิบายอย่างมีเหตุผล',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q14',
+                quizType: 'single',
+                correctIndex: 3,
+                choices: [
+                    '๑. มารี คูรี เป็นผู้หญิงคนแรกที่ได้รับรางวัลโนเบลและได้รับถึงสองครั้ง',
+                    '๒. เธอเดินทางจากกรุงวอร์ซอไปศึกษาต่อด้านวิทยาศาสตร์ ณ กรุงปารีส',
+                    '๓. ผลงานสำคัญของเธอ คือ การศึกษาทางฟิสิกส์เรื่องปรากฏการณ์การแผ่รังสี',
+                    '๔. การค้นพบแร่พอโลเนียมและแร่เรเดียมทำให้เธอได้รับรางวัลโนเบล สาขาวิชาเคมี'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔</strong> — แสดงความเป็นเหตุเป็นผลชัดเจน ("การค้นพบแร่... ทำให้เธอได้รับรางวัลโนเบล...")'
+            },
+            {
+                menuTitle: 'ข้อ 15 : ข้อคิดจากข้อความ',
+                title: 'ข้อ 15. ข้อความต่อไปนี้ไม่ให้ข้อคิดเรื่องใด',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q15',
+                quizType: 'single',
+                correctIndex: 3,
+                passage: '"การดำรงชีวิตที่ดีจะต้องปรับปรุงตัวตลอดเวลา การปรับปรุงตัวจะต้องมีความเพียรและความอดทนเป็นที่ตั้ง ถ้าคนเราไม่หมั่นเพียร ไม่มีความอดทน ก็อาจจะท้อใจไปโดยง่าย เมื่อท้อใจไปแล้ว ไม่มีทางที่จะมีชีวิตเจริญรุ่งเรืองแน่ ๆ"',
+                choices: [
+                    '๑. การสร้างแรงบันดาลใจก่อให้เกิดความกลมเกลียว',
+                    '๒. การดำเนินชีวิตที่ดีต้องมีคุณธรรม',
+                    '๓. การท้อใจแก้ได้ด้วยความอดกลั้น',
+                    '๔. การพัฒนาตนต้องใช้ความพยายามและอดทน'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔ (ตามเครื่องหมายเฉลยในเอกสาร PDF)</strong>'
+            },
+            {
+                menuTitle: 'ข้อ 16 : สรุปความจากพระบรมราโชวาท',
+                title: 'ข้อ 16. ข้อความใดไม่สามารถสรุปได้จากพระบรมราโชวาทต่อไปนี้',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q16',
+                quizType: 'single',
+                correctIndex: 0,
+                passage: '"การที่จะใช้ความรู้ประกอบอาชีพต่อไปข้างหน้า ควรนึกถึงเกียรติและความซื่อตรง เพื่อประโยชน์ส่วนรวมให้มาก บ้านเมืองจะเจริญรุ่งเรืองก็ได้อาศัยคนดีมีความรู้ช่วยกันประกอบกิจการงาน"',
+                choices: [
+                    '๑. การประกอบอาชีพที่ถนัดช่วยให้ตนเองเจริญก้าวหน้า',
+                    '๒. การประกอบกิจการงานควรเป็นไปเพื่อสังคมส่วนรวม',
+                    '๓. การใช้วิชาความรู้ในการทำงานต้องใช้อย่างซื่อสัตย์และมีศักดิ์ศรี',
+                    '๔. การพัฒนาประเทศให้เจริญก้าวหน้าต้องใช้คุณธรรมหลายประการประกอบกัน'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — พระบรมราโชวาทไม่ได้กล่าวถึง "อาชีพที่ถนัด" หรือความเจริญก้าวหน้าส่วนตัว แต่มุ่งเน้นเกียรติ ความซื่อตรง และประโยชน์ส่วนรวม'
+            },
+            {
+                menuTitle: 'ข้อ 17 : วิเคราะห์ข้อความ (Clickbait)',
+                title: 'ข้อ 17. ข้อความต่อไปนี้ ข้อใดกล่าวไม่ถูกต้อง',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q17',
+                quizType: 'single',
+                correctIndex: 3,
+                passage: '"วันที่ ๒ ตุลาคม ๒๕๖๖ ราชบัณฑิตยสภาประกาศว่า ศัพท์บัญญัติของคำว่า Clickbait คือ "พาดหัวยั่วให้คลิก" หรือทับศัพท์ว่า คลิกเบต โดยให้ความหมายเพิ่มเติมว่า หมายถึง การพาดหัวข่าวหรือหัวข้อเนื้อหาบนอินเทอร์เน็ต เพื่อดึงดูดความสนใจให้ผู้อ่านเกิดความอยากรู้อยากติดตามอ่านเนื้อหาโดยคลิกเข้าไปอ่าน ซึ่งเนื้อหานั้นอาจไม่สำคัญ ไม่ครบถ้วน หรืออาจบิดเบือนก็ได้"',
+                choices: [
+                    '๑. ให้ข้อมูลถูกต้องน่าเชื่อถือ',
+                    '๒. เนื้อหาให้ความรู้ที่เป็นประโยชน์',
+                    '๓. เปรียบเทียบให้ผู้อ่านติดตาม',
+                    '๔. ใช้กลวิธีขยายย่อหน้าโดยการให้ความหมาย'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔ (ตามเครื่องหมายเฉลยในเอกสาร PDF)</strong>'
+            },
+            {
+                menuTitle: 'ข้อ 18 : การพัฒนาตนจากคำพูด',
+                title: 'ข้อ 18. คำพูดต่อไปนี้แสดงให้เห็นว่าผู้พูดต้องพัฒนาตนตามข้อใด เพื่อให้เกิดความสุขในชีวิต',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q18',
+                quizType: 'single',
+                correctIndex: 1,
+                passage: '"...คนที่พอใจในสิ่งที่ตนมีอยู่หรือเป็นอยู่ในปัจจุบันจะไม่มีข้อสงสัยใด ๆ กับชีวิต ทั้งนี้เพราะพวกเขาไม่ได้รู้สึกขาดแคลน แต่ชีวิตผมดำเนินไปโดยมักมีคำถามอยู่ในสมองเสมอ..."',
+                choices: [
+                    '๑. ทำใจให้เบิกบาน',
+                    '๒. รู้จักพอใจในชีวิต',
+                    '๓. เอื้อเฟื้อเผื่อแผ่ผู้อื่น',
+                    '๔. สนใจสังคมรอบด้าน'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๒</strong> — ผู้พูดเปรียบเทียบตนเองกับคนที่พอใจในสิ่งที่ตนมีอยู่ ดังนั้นสิ่งที่ควรพัฒนาคือ "รู้จักพอใจในชีวิต"'
+            },
+            {
+                menuTitle: 'ข้อ 19 : โอกาสการพูดประกอบคำประพันธ์',
+                title: 'ข้อ 19. คำประพันธ์ต่อไปนี้ใช้ประกอบการพูดโอกาสใดได้เหมาะสม',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q19',
+                quizType: 'single',
+                correctIndex: 2,
+                poem: [
+                    ['ความรู้ดูยิ่งล้ำ', 'สินทรัพย์'],
+                    ['คิดค่าควรเมืองนับ', 'ยิ่งไซร้'],
+                    ['เพราะเหตุจักอยู่กับ', 'กายอาตมานา'],
+                    ['โจรจักเบียนบ่ได้', 'เร่งรู้เรียนเอา']
+                ],
+                choices: [
+                    '๑. วันครู',
+                    '๒. วันคล้ายวันเกิด',
+                    '๓. วันสำเร็จการศึกษา',
+                    '๔. วันได้รับตำแหน่งประธานนักเรียน'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓</strong> — บทประพันธ์กล่าวถึงคุณค่าของความรู้ที่มีค่ายิ่งกว่าทรัพย์สิน จึงเหมาะแก่การพูดในวันสำเร็จการศึกษา'
+            },
+            {
+                menuTitle: 'ข้อ 20 : การพูดโน้มน้าวใจ',
+                title: 'ข้อ 20. ข้อใดเป็นการพูดโน้มน้าวใจ',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q20',
+                quizType: 'single',
+                correctIndex: 0,
+                choices: [
+                    '๑. ไก่ทอดร้านนี้รสเด็ดเผ็ดจัดจ้านถึงใจ',
+                    '๒. ห้ามขับรถเข้าไปในพื้นที่ที่น้ำกำลังท่วมการดื่ม',
+                    '๓. น้ำอุ่นช่วยให้โลหิตไหลเวียนได้ดี',
+                    '๔. ฤดูหนาวปีนี้จะเริ่มต้นตอนปลายเดือนตุลาคม'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — ใช้ถ้อยคำชวนเชื่อและกระตุ้นความอยากลองชิม ("รสเด็ดเผ็ดจัดจ้านถึงใจ")'
+            },
+            {
+                menuTitle: 'ข้อ 21 : คำว่า "นักท่องเที่ยว" ในบทกรรม',
+                title: 'ข้อ 21. คำว่า "นักท่องเที่ยว" ในข้อใดทำหน้าที่เป็นบทกรรมของประโยค',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q21',
+                quizType: 'single',
+                correctIndex: 2,
+                passage: '๑) ททท.เตรียมจัดงานเพื่อขอบคุณนักท่องเที่ยวมาเลเซียที่เข้าไทยทะลุ ๑ ล้านคน เป็นชาติแรก<br>๒) ส่วนนักท่องเที่ยวจากประเทศอินเดียก็จะเดินทางเข้าไทยทะลุ ๑ ล้านคน เป็นชาติที่ ๒ ในเร็ววันนี้<br>๓) นอกจากนี้ ททท.ยังคาดว่าสิ้นปีนี้นักท่องเที่ยวจากญี่ปุ่นจะเดินทางเข้าไทยราว ๓ แสน ๕ หมื่นคน<br>๔) ส่วนวิธีที่จะดึงนักท่องเที่ยวจากฮ่องกงมาเที่ยวไทย ททท. จะร่วมมือกับสายการบินจัดตั๋วราคาพิเศษ',
+                choices: [
+                    '๑. ข้อ ๑) และ ๒)',
+                    '๒. ข้อ ๒) และ ๓)',
+                    '๓. ข้อ ๑) และ ๔)',
+                    '๔. ข้อ ๒) และ ๔)'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓</strong> — ข้อ ๑) "ขอบคุณนักท่องเที่ยว" (กรรมเพราะถูกขอบคุณ) และ ข้อ ๔) "ดึงนักท่องเที่ยว" (กรรมเพราะถูกดึง) ส่วนข้อ ๒) และ ๓) เป็นบทประธาน'
+            },
+            {
+                menuTitle: 'ข้อ 22 : เติมคำประพันธ์และข้อคิด (หมวด ก. / ข.)',
+                title: 'ข้อ 22. เลือกคำประพันธ์ที่เหมาะสมในหมวด ก. และข้อคิดที่สอดคล้องในหมวด ข.',
+                strand: 'ตอนที่ 1 • หมวดสัมพันธ์กัน',
+                isQuiz: true,
+                quizId: 'q22',
+                quizType: 'match',
+                poem: [
+                    ['วาจาแม้กล่าวถ้อย', 'หอมหวาน'],
+                    ['หากแต่ไร้ผลงาน', 'ที่แท้'],
+                    ['........................................', '.............'],
+                    ['เลิศกว่าพูดพร่ำแล้', 'ยิ่งถ้อยทั้งปวง']
+                ],
+                groupA: [
+                    '๑. ย่อมไม่เทียบเทียมได้   ดั่งใจ',
+                    '๒. ใจจริงอาจแตกต่าง   คำกล่าว',
+                    '๓. ลงมือประกอบการ   เสร็จสรรพ',
+                    '๔. สู้ลงมือทำบ้าง   แม้เหนื่อย'
+                ],
+                groupB: [
+                    '๑. ความซื่อสัตย์เป็นคุณธรรมอันประเสริฐ',
+                    '๒. คุณค่าของคนวัดจากการลงมือทำ',
+                    '๓. การกระทำสำคัญกว่าคำพูด',
+                    '๔. ควรพูดให้น้อย'
+                ],
+                correctA: 2,
+                correctB: 2,
+                explanation: '<strong>เฉลย หมวด ก. ข้อ ๓ และ หมวด ข. ข้อ ๓</strong> — บาทที่ ๓ ต้องคล้องจองตามฉันทลักษณ์โคลงสี่สุภาพ ("งาน" สัมผัสกับคำว่า "การ" และคำสุดท้ายบาท ๓ มีเสียงเอก/โทตามผัง หรือใช้ "เสร็จสรรพ" เพื่อความหมายต่อเนื่องกับบาท ๔) โดยสื่อข้อคิดว่า "การกระทำสำคัญกว่าคำพูด"'
+            },
+            {
+                menuTitle: 'ข้อ 23 : ข้อคิดจากคำประพันธ์',
+                title: 'ข้อ 23. คำประพันธ์ต่อไปนี้ให้ข้อคิดเรื่องใด',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q23',
+                quizType: 'single',
+                correctIndex: 0,
+                poem: [
+                    ['อยากทำก็เร่งให้', 'ฉับพลัน'],
+                    ['กาลผ่านไปเร็ววัน', 'อย่าช้า'],
+                    ['นานไปยิ่งผัดผัน', 'จักยาก'],
+                    ['มัจจุราชมาตรงหน้า', 'อาจม้วยมรณา']
+                ],
+                choices: [
+                    '๑. ความมุ่งมั่น',
+                    '๒. ความอดทน',
+                    '๓. ความซื่อสัตย์',
+                    '๔. ความตรงต่อเวลา'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑</strong> — สอนให้ตั้งใจและรีบลงมือทำในสิ่งที่ต้องการทันที อย่ารอช้าหรือผัดวันประกันพรุ่ง'
+            },
+            {
+                menuTitle: 'ข้อ 24 : การปฏิบัติตนที่ไม่สอดคล้องกับคำประพันธ์',
+                title: 'ข้อ 24. การปฏิบัติตนในข้อใดไม่สอดคล้องกับคำประพันธ์ต่อไปนี้',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q24',
+                quizType: 'single',
+                correctIndex: 2,
+                poem: [
+                    ['เข้าเถื่อนอย่าหมิ่นพร้า', 'มีไป'],
+                    ['เข้าศึกอย่านอนใจ', 'เฉื่อยชา'],
+                    ['อาวุธอย่าวางไกล', 'ขุกค่ำ คืนแฮ'],
+                    ['นอนแต่ยามหนึ่งอ้า', 'อาจป้องภัยพาล']
+                ],
+                choices: [
+                    '๑. นักเรียนส่งการบ้านตามเวลาที่ครูกำหนด',
+                    '๒. นักวิ่งมาราธอนฝึกซ้อมวิ่งกับผู้ฝึกสอนอย่างสม่ำเสมอ',
+                    '๓. นักแสดงช่วยส่งอาหารและน้ำให้แก่ผู้ประสบภัยน้ำท่วม',
+                    '๔. นักท่องเที่ยวข้ามถนนบริเวณสี่แยก โดยดูสัญญาณไฟก่อนข้าม'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๓</strong> — บทประพันธ์สื่อถึงความไม่ประมาทและระมัดระวังตนอยู่เสมอ ข้อ ๓ เป็นการมีน้ำใจช่วยเหลือผู้อื่น จึงไม่ตรงกับแนวคิดหลักของบทประพันธ์'
+            },
+            {
+                menuTitle: 'ข้อ 25 : คุณค่าของคำประพันธ์',
+                title: 'ข้อ 25. คำประพันธ์ต่อไปนี้มีคุณค่าตามข้อใด',
+                strand: 'ตอนที่ 1 • ปรนัย 4 ตัวเลือก',
+                isQuiz: true,
+                quizId: 'q25',
+                quizType: 'single',
+                correctIndex: 1,
+                poem: [
+                    ['รวงข้าวทองส่องทั่วท้องทุ่งกว้าง', 'คือผลงานสรรค์สร้างจากดินฟ้า'],
+                    ['ปลูกด้วยแรงปั้นด้วยรักจากชาวนา', 'ช่วยหล่อเลี้ยงทุกชีวาประชาไทย'],
+                    ['ต้องเหนื่อยยากลำบากถึงเพียงนี้', 'กว่าจะได้ข้าวรสดีกว่าที่ไหน'],
+                    ['ขอขอบคุณทุกหยาดเหงื่อด้วยหัวใจ', 'เพราะผู้สร้างอันยิ่งใหญ่แห่งแผ่นดิน']
+                ],
+                choices: [
+                    '๑. คุณค่าทางศีลธรรม',
+                    '๒. คุณค่าของเกษตรกร',
+                    '๓. คุณค่าของธัญญาหาร',
+                    '๔. คุณค่าทางโภชนาการ'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๒</strong> — ยกย่องและขอบคุณชาวนาในฐานะ "ผู้สร้างอันยิ่งใหญ่แห่งแผ่นดิน" ซึ่งสะท้อนคุณค่าของเกษตรกร'
+            },
+            {
+                menuTitle: 'ข้อ 26 : คำสมาสทำหน้าที่บทประธาน (เลือก 2 คำตอบ)',
+                title: 'ข้อ 26. ประโยค ๒ ข้อใดมีคำสมาสทำหน้าที่บทประธาน',
+                strand: 'ตอนที่ 2 • 5 ตัวเลือก (เลือก 2 คำตอบ)',
+                isQuiz: true,
+                quizId: 'q26',
+                quizType: 'multi',
+                corrects: [3, 4],
+                choices: [
+                    '๑. ผู้ใหญ่บ้านเร่งอพยพลูกบ้านหนีภัยน้ำท่วม',
+                    '๒. หัวหน้าห้องรวบรวมสมุดการบ้านส่งอาจารย์',
+                    '๓. บริเวณป่าทึบเป็นที่อยู่ของสรรพสัตว์นานาชนิด',
+                    '๔. จักรยานยนต์เป็นพาหนะที่ใช้เดินทางได้รวดเร็ว',
+                    '๕. ธรรมชาติรุนแรงมากขึ้นเพราะสิ่งแวดล้อมเปลี่ยนไป'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๔ และ ๕</strong> — ข้อ ๔ "จักรยานยนต์" (จักร + ยาน + ยนต์) และ ข้อ ๕ "ธรรมชาติ" (ธรรม + ชาติ) เป็นคำสมาสจากภาษาบาลี-สันสกฤตที่ทำหน้าที่บทประธานของประโยค'
+            },
+            {
+                menuTitle: 'ข้อ 27 : ประโยครวม (เลือก 2 คำตอบ)',
+                title: 'ข้อ 27. ข้อความ ๒ ข้อใดเป็นประโยครวม',
+                strand: 'ตอนที่ 2 • 5 ตัวเลือก (เลือก 2 คำตอบ)',
+                isQuiz: true,
+                quizId: 'q27',
+                quizType: 'multi',
+                corrects: [0, 2],
+                choices: [
+                    '๑. หมอนใบนี้มีลักษณะตรงกลางบางกว่าด้านซ้ายและด้านขวาแต่สามารถใช้หนุนคอได้ดี',
+                    '๒. การบรรยายของศาสตราจารย์นายแพทย์เสก อักษรานุเคราะห์ ผู้อำนวยการศูนย์เวชศาสตร์ฟื้นฟู',
+                    '๓. หนังสือเล่มนี้เป็นหนังสือรวมบทวิเคราะห์และเป็นหนังสือรวมบทวิจารณ์วรรณกรรมร่วมสมัยด้วย',
+                    '๔. แว่นขยายที่เหมาะสำหรับนักสะสมแสตมป์ นักสะสมเหรียญ นักสะสมทั่วไป รวมทั้งผู้ใช้พจนานุกรม',
+                    '๕. ในสภาวะปกติ การสร้างเนื้อกระดูกและการสลายเนื้อกระดูกของมนุษย์เกิดขึ้นพร้อม ๆ กันไปตลอดช่วงเวลา'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑ และ ๓</strong> — ข้อ ๑ เชื่อม ๒ ประโยคด้วยคำสันธาน "แต่" และ ข้อ ๓ เชื่อม ๒ ประโยคด้วยคำสันธาน "และ" ส่วนข้อ ๒ และ ๔ เป็นเพียงกลุ่มคำ (วลี)'
+            },
+            {
+                menuTitle: 'ข้อ 28 : ข้อความที่ไม่ปรากฏศัพท์บัญญัติ (เลือก 2 คำตอบ)',
+                title: 'ข้อ 28. ข้อความ ๒ ข้อใดไม่ปรากฏศัพท์บัญญัติ',
+                strand: 'ตอนที่ 2 • 5 ตัวเลือก (เลือก 2 คำตอบ)',
+                isQuiz: true,
+                quizId: 'q28',
+                quizType: 'multi',
+                corrects: [0, 2],
+                choices: [
+                    '๑. แม่ทำคลิปรีวิวทัวร์ที่เชียงใหม่',
+                    '๒. เขาเป็นมัคคุเทศก์นำชมพิพิธภัณฑ์พื้นบ้าน',
+                    '๓. ครูใหญ่ผูกเนกไทสีกรมท่าไปทำงานทุกวัน',
+                    '๔. นักเรียนใช้ปัญญาประดิษฐ์หาข้อมูลทำรายงาน',
+                    '๕. เราควรเรียนรู้ทักษะคอมพิวเตอร์ในยุคโลกาภิวัตน์'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๑ และ ๓</strong> — ข้อ ๑ ใช้คำทับศัพท์ (คลิป, รีวิว, ทัวร์) และ ข้อ ๓ ใช้คำทับศัพท์ (เนกไท) โดยไม่มีศัพท์บัญญัติ ส่วนข้อ ๒ (มัคคุเทศก์/พิพิธภัณฑ์), ข้อ ๔ (ปัญญาประดิษฐ์), ข้อ ๕ (โลกาภิวัตน์) มีศัพท์บัญญัติปรากฏอยู่'
+            },
+            {
+                menuTitle: 'ข้อ 29 : สำนวนตรงกับสถานการณ์ (เลือก 2 คำตอบ)',
+                title: 'ข้อ 29. สำนวน ๒ ข้อใดตรงกับการกระทำของคุณแม่ตามสถานการณ์ข้างต้น',
+                strand: 'ตอนที่ 2 • 5 ตัวเลือก (เลือก 2 คำตอบ)',
+                isQuiz: true,
+                quizId: 'q29',
+                quizType: 'multi',
+                corrects: [1, 3],
+                passage: '"พี่และน้องแย่งของเล่นกัน กำลังจะลงไม้ลงมือตีกัน คุณแม่เห็นท่าไม่ดีจึงรีบแยกออกจากกัน เก็บของเล่นไม่ให้ใครเล่น และทำโทษให้ไปนั่งหันหน้าเข้ามุมคนละมุม พร้อมทั้งขู่ว่าถ้าไม่เลิกทะเลาะกัน แม่จะไม่เลี้ยงแล้ว"',
+                choices: [
+                    '๑. ตัดเชือก',
+                    '๒. ตัดไฟต้นลม',
+                    '๓. ตัดญาติขาดมิตร',
+                    '๔. ตัดหางปล่อยวัด',
+                    '๕. ตัดช่องน้อยแต่พอตัว'
+                ],
+                explanation: '<strong>เฉลย ข้อ ๒ และ ๔</strong> — "ตัดไฟต้นลม" หมายถึง ป้องกันหรือแก้ไขเหตุการณ์ที่อาจก่อให้เกิดความเสียหายตั้งแต่เริ่มต้น (รีบแยกและเก็บของเล่นก่อนตีกัน) และ "ตัดหางปล่อยวัด" หมายถึง ตัดขาด ไม่เกี่ยวข้อง ไม่รับผิดชอบอีกต่อไป (ขู่ว่าแม่จะไม่เลี้ยงแล้ว)'
+            },
+            {
+                type: 'cover',
+                menuTitle: '30. จบชุดติวแนวข้อสอบปี 2568',
+                html: `
+                    <div style="max-width:760px; margin:auto;">
+                        <div style="display:flex; justify-content:center; gap:16px; align-items:center; margin-bottom:14px;">
+                            <div class="mascot-badge" style="width:92px; height:92px;"><img src="../assets/chibi-student-girl.jpg" alt="นักเรียนหญิง Chibi" /></div>
+                            <div class="mascot-badge" style="width:92px; height:92px; border-color:#ec4899; box-shadow:0 5px 0 #9d174d; animation-delay:0.4s;"><img src="../assets/chibi-student-boy.jpg" alt="นักเรียนชาย Chibi" /></div>
+                        </div>
+                        <h1 style="font-size:2.3rem; color:#0c4a6e; margin-bottom:14px;">เก่งมาก! ตะลุยครบทั้ง 29 ข้อแล้ว 🎉</h1>
+                        <p style="font-size:1.15rem; color:#475569; margin-bottom:26px;">แนวข้อสอบ O-NET วิชาภาษาไทย ชั้นมัธยมศึกษาปีที่ 3 ปีการศึกษา 2568</p>
+                        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:24px;">
+                            <button class="btn btn-primary" style="padding:12px 24px; font-size:1rem;" onclick="goToSlide(0)">🔄 กลับไปหน้าแรกของสไลด์</button>
+                            <a class="btn btn-accent" style="padding:12px 24px; font-size:1rem;" href="index.html">🏠 กลับหน้าศูนย์รวมสื่อ ม.3</a>
+                        </div>
+                        <div style="background:#ffffff; border:3px solid #f472b6; border-radius:20px; padding:10px 22px; display:inline-block; color:#be185d; font-weight:700; font-size:0.95rem;">
+                            👩‍🏫 ห้องเรียนครูเบ็ญจวรรณ สิงห์กุล | โรงเรียนวัดราษฎร์บำรุง สพป.สระบุรี เขต 2
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        let currentSlide = 0;
+        let soundEnabled = true;
+        let audioCtx = null;
+        const multiState = {};
+        const matchState = {};
+
+        function getAudioCtx() {
+            if (!audioCtx) {
+                const Ctx = window.AudioContext || window.webkitAudioContext;
+                if (Ctx) audioCtx = new Ctx();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+            return audioCtx;
+        }
+
+        function playTone(freq, duration, type = 'sine', delay = 0, vol = 0.16) {
+            if (!soundEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+            gain.gain.setValueAtTime(0.001, ctx.currentTime + delay);
+            gain.gain.exponentialRampToValueAtTime(vol, ctx.currentTime + delay + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(ctx.currentTime + delay);
+            osc.stop(ctx.currentTime + delay + duration + 0.02);
+        }
+
+        function playCorrectSound() {
+            playTone(523.25, 0.14, 'triangle', 0, 0.18);
+            playTone(659.25, 0.14, 'triangle', 0.09, 0.18);
+            playTone(783.99, 0.16, 'triangle', 0.18, 0.18);
+            playTone(1046.5, 0.32, 'triangle', 0.27, 0.2);
+        }
+
+        function playWrongSound() {
+            playTone(311.13, 0.18, 'sawtooth', 0, 0.08);
+            playTone(233.08, 0.28, 'sawtooth', 0.14, 0.08);
+        }
+
+        function playRevealSound() {
+            playTone(587.33, 0.12, 'sine', 0, 0.15);
+            playTone(783.99, 0.12, 'sine', 0.08, 0.15);
+            playTone(987.77, 0.24, 'sine', 0.16, 0.17);
+        }
+
+        function playClickSound() {
+            playTone(660, 0.07, 'sine', 0, 0.1);
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('soundToggleBtn');
+            btn.textContent = soundEnabled ? '🔊 เสียง: เปิด' : '🔇 เสียง: ปิด';
+            btn.classList.toggle('muted', !soundEnabled);
+            if (soundEnabled) playClickSound();
+        }
+
+        function spawnSparkles(targetEl) {
+            const rect = targetEl ? targetEl.getBoundingClientRect() : { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            const icons = ['✨', '⭐', '🌸', '🎉', '💫'];
+            for (let i = 0; i < 8; i++) {
+                const sp = document.createElement('span');
+                sp.className = 'sparkle-burst';
+                sp.textContent = icons[i % icons.length];
+                const angle = (Math.PI * 2 * i) / 8;
+                const dist = 55 + Math.random() * 45;
+                sp.style.left = cx + 'px';
+                sp.style.top = cy + 'px';
+                sp.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                sp.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                document.body.appendChild(sp);
+                setTimeout(() => sp.remove(), 950);
+            }
+        }
+
+        function getMascotSvg(idx) {
+            const imgs = [
+                '../assets/chibi-student-girl.jpg',
+                '../assets/chibi-student-boy.jpg',
+                '../assets/chibi-teacher.jpg'
+            ];
+            const src = imgs[idx % imgs.length];
+            return `<img src="${src}" alt="การ์ตูนนักเรียน Chibi" />`;
+        }
+
+        function renderSlides() {
+            const container = document.getElementById('slidesContainer');
+            const selector = document.getElementById('slideSelector');
+            container.innerHTML = '';
+            selector.innerHTML = '';
+
+            slidesData.forEach((s, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = s.menuTitle;
+                selector.appendChild(opt);
+
+                let bodyHtml = s.html || '';
+                if (s.isQuiz) {
+                    const passageHtml = s.passage ? `<div class="passage-box">${s.passage}</div>` : '';
+                    const poemHtml = s.poem
+                        ? `<div class="poem-box">${s.poem.map(([a, b]) => `<span>${a}</span><span>${b}</span>`).join('')}</div>`
+                        : '';
+
+                    let interactiveHtml = '';
+                    if (s.quizType === 'single') {
+                        interactiveHtml = `<div class="choices-grid">${s.choices.map((c, i) => `
+                            <button class="choice-btn" id="${s.quizId}_c${i}" onclick="selectSingle('${s.quizId}', ${i}, ${s.correctIndex})">
+                                <span>${c}</span><span class="choice-status"></span>
+                            </button>`).join('')}</div>`;
+                    } else if (s.quizType === 'multi') {
+                        interactiveHtml = `
+                            <p style="font-size:0.95rem; color:#6d28d9; font-weight:700; margin-bottom:8px;">☑️ คลิกเลือก 2 คำตอบเพื่อตรวจผล</p>
+                            <div class="choices-grid">${s.choices.map((c, i) => `
+                            <button class="choice-btn" id="${s.quizId}_c${i}" onclick="toggleMulti('${s.quizId}', ${i}, ${JSON.stringify(s.corrects)})">
+                                <span>${c}</span><span class="choice-status"></span>
+                            </button>`).join('')}</div>`;
+                    } else if (s.quizType === 'match') {
+                        interactiveHtml = `
+                            <p style="font-size:0.95rem; color:#0369a1; font-weight:700; margin-bottom:8px;">🔗 เลือกคำตอบทั้งหมวด ก. และหมวด ข. อย่างละ 1 ข้อ</p>
+                            <div class="match-grid">
+                                <div class="match-col">
+                                    <h4>หมวด ก. (เลือก ๑ คำตอบ)</h4>
+                                    <div class="choices-grid" style="margin-bottom:0;">
+                                        ${s.groupA.map((c, i) => `
+                                            <button class="choice-btn" id="${s.quizId}_a${i}" onclick="selectMatch('${s.quizId}', 'a', ${i}, ${s.correctA}, ${s.correctB})">
+                                                <span>${c}</span><span class="choice-status"></span>
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                <div class="match-col">
+                                    <h4>หมวด ข. (เลือก ๑ คำตอบ)</h4>
+                                    <div class="choices-grid" style="margin-bottom:0;">
+                                        ${s.groupB.map((c, i) => `
+                                            <button class="choice-btn" id="${s.quizId}_b${i}" onclick="selectMatch('${s.quizId}', 'b', ${i}, ${s.correctA}, ${s.correctB})">
+                                                <span>${c}</span><span class="choice-status"></span>
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>`;
+                    }
+
+                    bodyHtml = `
+                        ${passageHtml}
+                        ${poemHtml}
+                        ${interactiveHtml}
+                        <div class="answer-panel" id="ans_${s.quizId}">${s.explanation}</div>
+                    `;
+                }
+
+                const slideEl = document.createElement('div');
+                slideEl.className = 'slide' + (s.type === 'cover' ? ' cover-slide' : '') + (idx === 0 ? ' active' : '');
+                slideEl.id = 'slide_' + idx;
+
+                if (s.type === 'cover') {
+                    slideEl.innerHTML = bodyHtml;
+                } else {
+                    const mascotColors = [
+                        'linear-gradient(135deg,#fef08a,#fde047)',
+                        'linear-gradient(135deg,#fbcfe8,#f472b6)',
+                        'linear-gradient(135deg,#bae6fd,#38bdf8)',
+                        'linear-gradient(135deg,#bbf7d0,#4ade80)'
+                    ];
+                    const cornerDecos = ['🌸 🌼 ✨', '🍀 🦋 🌟', '🌻 📚 💡', '🌷 🎨 ⭐'];
+                    slideEl.innerHTML = `
+                        <div class="slide-header">
+                            <div class="slide-header-left">
+                                <div class="mascot-badge" style="background:${mascotColors[idx % mascotColors.length]}">${getMascotSvg(idx)}</div>
+                                <div class="slide-title">${s.title}</div>
+                            </div>
+                            <div class="strand-tag">${s.strand}</div>
+                        </div>
+                        <div class="slide-body">${bodyHtml}</div>
+                        <div class="slide-footer">
+                            <span class="corner-deco">${cornerDecos[idx % cornerDecos.length]}</span>
+                            <div style="background:#ffffff; border:2px solid #f472b6; border-radius:16px; padding:6px 18px; display:inline-block; color:#be185d; font-weight:700; font-size:0.92rem; box-shadow:0 3px 0 #fbcfe8;">
+                                👩‍🏫 ครูเบ็ญจวรรณ สิงห์กุล | โรงเรียนวัดราษฎร์บำรุง สพป.สระบุรี เขต 2
+                            </div>
+                            <span class="corner-deco">${cornerDecos[(idx + 1) % cornerDecos.length]}</span>
+                        </div>
+                    `;
+                }
+                container.appendChild(slideEl);
+            });
+            updateUI();
+        }
+
+        function updateUI() {
+            document.querySelectorAll('.slide').forEach((el, idx) => el.classList.toggle('active', idx === currentSlide));
+            document.getElementById('slideSelector').value = currentSlide;
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${slidesData.length}`;
+            const revealBtn = document.getElementById('globalRevealBtn');
+            revealBtn.style.display = slidesData[currentSlide].isQuiz ? 'inline-block' : 'none';
+        }
+
+        function nextSlide() { if (currentSlide < slidesData.length - 1) { currentSlide++; updateUI(); } }
+        function prevSlide() { if (currentSlide > 0) { currentSlide--; updateUI(); } }
+        function goToSlide(idx) { currentSlide = parseInt(idx, 10); updateUI(); }
+
+        function selectSingle(qId, cIdx, correctIdx) {
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`${qId}_c${i}`);
+                btn.classList.remove('correct-revealed', 'wrong-selected');
+                btn.querySelector('.choice-status').textContent = '';
+            }
+            const clickedEl = document.getElementById(`${qId}_c${cIdx}`);
+            const correctEl = document.getElementById(`${qId}_c${correctIdx}`);
+            const panel = document.getElementById(`ans_${qId}`);
+            if (cIdx === correctIdx) {
+                clickedEl.classList.add('correct-revealed');
+                clickedEl.querySelector('.choice-status').textContent = '✅ ถูกต้อง!';
+                playCorrectSound();
+                spawnSparkles(clickedEl);
+            } else {
+                clickedEl.classList.add('wrong-selected');
+                clickedEl.querySelector('.choice-status').textContent = '❌ ยังไม่ถูก';
+                correctEl.classList.add('correct-revealed');
+                correctEl.querySelector('.choice-status').textContent = '✅ คำตอบที่ถูก';
+                playWrongSound();
+            }
+            panel.classList.add('visible');
+        }
+
+        function toggleMulti(qId, cIdx, corrects) {
+            if (!multiState[qId]) multiState[qId] = new Set();
+            const sel = multiState[qId];
+            const el = document.getElementById(`${qId}_c${cIdx}`);
+            if (sel.has(cIdx)) {
+                sel.delete(cIdx);
+                el.classList.remove('selected-multi');
+                el.querySelector('.choice-status').textContent = '';
+                playClickSound();
+            } else if (sel.size < 2) {
+                sel.add(cIdx);
+                el.classList.add('selected-multi');
+                el.querySelector('.choice-status').textContent = '☑️ เลือกแล้ว';
+                if (sel.size < 2) playClickSound();
+            }
+            if (sel.size === 2) {
+                let allCorrect = true;
+                for (let i = 0; i < 5; i++) {
+                    const btn = document.getElementById(`${qId}_c${i}`);
+                    btn.classList.remove('selected-multi', 'correct-revealed', 'wrong-selected');
+                    if (corrects.includes(i)) {
+                        btn.classList.add('correct-revealed');
+                        btn.querySelector('.choice-status').textContent = '✅ คำตอบที่ถูก';
+                        if (!sel.has(i)) allCorrect = false;
+                    } else if (sel.has(i)) {
+                        btn.classList.add('wrong-selected');
+                        btn.querySelector('.choice-status').textContent = '❌ ยังไม่ถูก';
+                        allCorrect = false;
+                    } else {
+                        btn.querySelector('.choice-status').textContent = '';
+                    }
+                }
+                if (allCorrect) {
+                    playCorrectSound();
+                    spawnSparkles(el);
+                } else {
+                    playWrongSound();
+                }
+                document.getElementById(`ans_${qId}`).classList.add('visible');
+            }
+        }
+
+        function selectMatch(qId, group, idx, correctA, correctB) {
+            if (!matchState[qId]) matchState[qId] = {};
+            matchState[qId][group] = idx;
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`${qId}_${group}${i}`);
+                btn.classList.remove('selected-multi', 'correct-revealed', 'wrong-selected');
+                btn.querySelector('.choice-status').textContent = '';
+            }
+            const selBtn = document.getElementById(`${qId}_${group}${idx}`);
+            selBtn.classList.add('selected-multi');
+            selBtn.querySelector('.choice-status').textContent = '☑️ เลือกแล้ว';
+
+            if (matchState[qId].a !== undefined && matchState[qId].b !== undefined) {
+                const isAllCorrect = (matchState[qId].a === correctA && matchState[qId].b === correctB);
+                [['a', correctA], ['b', correctB]].forEach(([g, corr]) => {
+                    for (let i = 0; i < 4; i++) {
+                        const btn = document.getElementById(`${qId}_${g}${i}`);
+                        btn.classList.remove('selected-multi');
+                        if (i === corr) {
+                            btn.classList.add('correct-revealed');
+                            btn.querySelector('.choice-status').textContent = '✅ คำตอบที่ถูก';
+                        } else if (matchState[qId][g] === i) {
+                            btn.classList.add('wrong-selected');
+                            btn.querySelector('.choice-status').textContent = '❌ ยังไม่ถูก';
+                        }
+                    }
+                });
+                if (isAllCorrect) {
+                    playCorrectSound();
+                    spawnSparkles(selBtn);
+                } else {
+                    playWrongSound();
+                }
+                document.getElementById(`ans_${qId}`).classList.add('visible');
+            } else {
+                playClickSound();
+            }
+        }
+
+        function toggleCurrentAnswer() {
+            const s = slidesData[currentSlide];
+            if (!s.isQuiz) return;
+            const panel = document.getElementById(`ans_${s.quizId}`);
+            const isShowing = panel.classList.toggle('visible');
+            if (isShowing) {
+                playRevealSound();
+                spawnSparkles(document.getElementById('globalRevealBtn'));
+            } else {
+                playClickSound();
+            }
+            if (s.quizType === 'single') {
+                const correctEl = document.getElementById(`${s.quizId}_c${s.correctIndex}`);
+                correctEl.classList.toggle('correct-revealed', isShowing);
+                correctEl.querySelector('.choice-status').textContent = isShowing ? '✅ คำตอบที่ถูก' : '';
+            } else if (s.quizType === 'multi') {
+                s.corrects.forEach(idx => {
+                    const correctEl = document.getElementById(`${s.quizId}_c${idx}`);
+                    correctEl.classList.toggle('correct-revealed', isShowing);
+                    correctEl.querySelector('.choice-status').textContent = isShowing ? '✅ คำตอบที่ถูก' : '';
+                });
+            } else if (s.quizType === 'match') {
+                [['a', s.correctA], ['b', s.correctB]].forEach(([g, corr]) => {
+                    const correctEl = document.getElementById(`${s.quizId}_${g}${corr}`);
+                    correctEl.classList.toggle('correct-revealed', isShowing);
+                    correctEl.querySelector('.choice-status').textContent = isShowing ? '✅ คำตอบที่ถูก' : '';
+                });
+            }
+        }
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+            else document.exitFullscreen().catch(() => {});
+        }
+
+        let textZoom = 1;
+        function zoomText(delta) {
+            textZoom = Math.min(1.5, Math.max(0.8, +(textZoom + delta).toFixed(2)));
+            document.documentElement.style.setProperty('--zoom', textZoom);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'PageDown') nextSlide();
+            else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+            else if (e.key === ' ') { e.preventDefault(); toggleCurrentAnswer(); }
+        });
+
+        renderSlides();
+    </script>
+</body>
+</html>
